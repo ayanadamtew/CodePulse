@@ -109,7 +109,7 @@ const LoginPage = () => {
             <Link to="/" className="inline-block mb-4">
               {/* Brand Name - Consistent Gradient */}
               <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 hover:opacity-80 transition-opacity">
-                LeetCoder
+                CodePulse
               </span>
             </Link>
             <h2 className="text-2xl font-semibold text-slate-100">

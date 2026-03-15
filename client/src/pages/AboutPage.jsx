@@ -86,7 +86,7 @@ const AboutPage = () => {
                 Co-founder and CTO
               </p>
               <p className="text-slate-300 text-sm leading-relaxed mb-3">
-                Hi, I’m Ayana Damtew — co-founder of CodeInfinitum. I started building products from scratch with my teammate Naol Gezahegne in a small student dorm turned startup hub. I believe technology should be fast, reliable, and human-centered — crafted with care, not just code. Outside of shipping features and solving problems, I spend time exploring AI, refining my math skills, and dreaming up tools that make learning and working more meaningful.
+                Hi, I’m Ayana Damtew — co-founder of CodePulse. I started building products from scratch with my teammate Naol Gezahegne in a small student dorm turned startup hub. I believe technology should be fast, reliable, and human-centered — crafted with care, not just code. Outside of shipping features and solving problems, I spend time exploring AI, refining my math skills, and dreaming up tools that make learning and working more meaningful.
               </p>
               <div className="flex space-x-4">
                 <a
@@ -131,7 +131,7 @@ const AboutPage = () => {
               </h3>
               <p className="text-indigo-300 font-medium mb-2">Co-founder and CEO</p>
               <p className="text-slate-300 text-sm leading-relaxed mb-3">
-               Hi, I’m Naol Gezahegne co-founder of CodeInfinitum. At 21, a founder with a deep passion for technology, collaborating with Ayana Damtew in my parents’ garage to hand-build the CodeInfinitum. I’m driven by a simple belief: computers should be powerful yet effortless to use, and beautiful in both form and function. When I’m not building startups or coding, I’m diving into books, exploring design, and imagining the next breakthrough in personal computing and AI.
+               Hi, I’m Naol Gezahegne co-founder of CodePulse. At 21, a founder with a deep passion for technology, collaborating with Ayana Damtew in my parents’ garage to hand-build the CodePulse. I’m driven by a simple belief: computers should be powerful yet effortless to use, and beautiful in both form and function. When I’m not building startups or coding, I’m diving into books, exploring design, and imagining the next breakthrough in personal computing and AI.
               </p>
               <div className="flex space-x-4">
                 <a

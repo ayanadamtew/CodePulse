@@ -57,7 +57,7 @@ const Footer = () => {
           <div className="md:col-span-1 lg:col-span-1">
             <Link to="/" className="inline-block mb-3">
               <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
-                CodeInfinitum
+                CodePulse
               </span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
@@ -112,7 +112,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 md:mt-16 pt-8 border-t border-slate-700/60 text-center">
           <p className="text-xs text-slate-500">
-            © {currentYear} LeetCoder. All rights reserved. Built with
+            © {currentYear} CodePulse. All rights reserved. Built with
             <span role="img" aria-label="love" className="mx-1"> ❤️ </span>
             and passion.
           </p>

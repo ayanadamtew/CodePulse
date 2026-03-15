@@ -153,9 +153,9 @@ const UserListPage = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {users?.map((user) => (
-                  <tr key={user.id}>
+                  <tr key={user._id}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <Link to={`/users/${user.id}`} className="text-blue-600 hover:text-blue-900">
+                      <Link to={`/users/${user._id}`} className="text-blue-600 hover:text-blue-900">
                         {user.username}
                       </Link>
                     </td>
@@ -176,7 +176,7 @@ const UserListPage = () => {
                       {new Date(user.lastActive).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <Link to={`/users/${user.id}`} className="text-blue-600 hover:text-blue-900">
+                      <Link to={`/users/${user._id}`} className="text-blue-600 hover:text-blue-900">
                         View Details
                       </Link>
                     </td>

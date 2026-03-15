@@ -217,7 +217,7 @@ const ContactPage = () => {
                     href="mailto:support@yourplatform.com"
                     className="hover:text-indigo-300 break-all"
                   >
-                    support@LeetCoder.com
+                    support@CodePulse.com
                   </a>
                   <p className="text-sm text-slate-400">
                     For general inquiries and support.

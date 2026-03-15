@@ -10,6 +10,8 @@ import runRoutes from './routes/run.js';
 import submitRoutes from './routes/submit.js';
 import aiRoutes from './routes/ai.js';
 import contactRoutes from './routes/contact.js'
+import statsRoutes from './routes/stats.js';
+import settingsRoutes from './routes/settings.js';
 
 // Load environment variables
 dotenv.config();
@@ -36,10 +38,12 @@ app.use('/api/run', runRoutes);
 app.use('/api/submit', submitRoutes);
 app.use('/api/ai-help', aiRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/stats', statsRoutes);
+app.use('/api/admin/settings', settingsRoutes);
 
 // Root route
 app.get('/', (req, res) => {
-  res.send('LeetCoder API is running');
+  res.send('CodePulse API is running');
 });
 
 // Start server

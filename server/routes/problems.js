@@ -3,6 +3,7 @@ import Problem from "../models/Problem.js";
 import Submission from "../models/Submission.js";
 import { auth, adminAuth } from "../middleware/auth.js";
 import mongoose from 'mongoose';
+import { generateProblemSummary } from "../services/aiService.js";
 
 
 const router = express.Router();
@@ -145,6 +146,22 @@ router.get("/:id", async (req, res) => {
     res.json(sanitizedProblem);
   } catch (error) {
     console.error("Get problem error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// Get generated summary for a problem
+router.get("/:id/generated-summary", async (req, res) => {
+  try {
+    const problem = await Problem.findById(req.params.id).lean();
+    if (!problem) {
+      return res.status(404).json({ message: "Problem not found" });
+    }
+
+    const summary = await generateProblemSummary(problem);
+    res.json({ summary });
+  } catch (error) {
+    console.error("Generate summary error:", error);
     res.status(500).json({ message: "Server error" });
   }
 });

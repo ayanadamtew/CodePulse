@@ -35,6 +35,7 @@ const ProblemSolvePage = () => {
   const [loadingProblem, setLoadingProblem] = useState(true);
   const [tabContentLoading, setTabContentLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [solutionError, setSolutionError] = useState(null);
 
   // AI Chat State
   const [aiMessages, setAiMessages] = useState([]);
@@ -171,11 +172,17 @@ const ProblemSolvePage = () => {
   const fetchSolution = useCallback(async () => {
     if (!id) return;
     setTabContentLoading(true);
+    setSolutionError(null);
     try {
       const response = await api.get(`/problems/${id}/solution`);
       setSolution(response.data);
     } catch (err) {
       console.error("Error fetching solution:", err);
+      if (err.response?.status === 403) {
+        setSolutionError("locked");
+      } else {
+        setSolutionError("error");
+      }
     } finally {
       setTabContentLoading(false);
     }
@@ -360,6 +367,7 @@ const ProblemSolvePage = () => {
           submissions={submissions}
           solution={solution}
           tabContentLoading={tabContentLoading}
+          solutionError={solutionError}
         />
         <EditorPanel
           language={language}

@@ -11,7 +11,7 @@ if (!GEMINI_API_KEY) {
 }
 
 const genAI = GEMINI_API_KEY ? new GoogleGenerativeAI(GEMINI_API_KEY) : null;
-const model = genAI ? genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" }) : null; // Or "gemini-1.0-pro"
+const model = genAI ? genAI.getGenerativeModel({ model: "gemini-1.5-flash" }) : null;
 
 const safetySettings = [
   { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE },
@@ -27,89 +27,83 @@ const generationConfig = {
   maxOutputTokens: 600, // Increased slightly for potentially longer explanations
 };
 
-export async function getAIHelp(problem, userQuery, conversationHistory = [], currentCode = "") {
+export async function generateProblemSummary(problem) {
   if (!model) {
-    console.error("Gemini model not initialized. This usually means GEMINI_API_KEY is missing or invalid.");
-    // Do not throw an error here, return a user-friendly message
-    return "I'm sorry, the AI assistant is currently unavailable due to a configuration issue.";
+    console.error("Gemini model not initialized.");
+    return "Summary unavailable.";
   }
 
   try {
-    const systemInstructionText = `You are LeetCoder AI, a specialized programming assistant for a platform similar to LeetCode.
+    const prompt = `Provide a very concise (max 3 sentences) summary of the following coding problem for a user who is about to start solving it. Highlight the core challenge.
+    
+    Title: ${problem.title || 'Untitled'}
+    Statement: ${problem.statement || 'No statement provided.'}
+    ${Array.isArray(problem.constraints) && problem.constraints.length > 0 ? `Constraints: ${problem.constraints.join(', ')}` : ''}`;
+
+    const result = await model.generateContent(prompt);
+    const response = result.response;
+    return response.text().trim();
+  } catch (error) {
+    console.error("Error generating problem summary:", error);
+    return "I'm ready to help you with this problem! What would you like to know?";
+  }
+}
+
+export async function getAIHelp(problem, userQuery, conversationHistory = [], currentCode = "") {
+  if (!genAI) {
+    console.error("Gemini AI not initialized.");
+    return "I'm sorry, the AI assistant is currently unavailable.";
+  }
+
+  try {
+    const systemInstruction = `You are CodePulse AI, a specialized programming assistant.
 Your primary role is to help users understand and solve coding problems.
 - When a user asks for a hint, provide a conceptual nudge or suggest an approach without giving away the direct solution or code.
 - If a user provides code and asks for debugging help, analyze their code and point out potential logical errors, syntax issues, or suggest improvements. Explain *why* something might be an issue.
 - If a user asks for an explanation of a concept related to the problem, explain it clearly and concisely.
 - If a user asks for the solution, politely decline and reiterate your role is to guide them, not solve it for them.
-- Keep your responses focused on the problem at hand.
 - Format code snippets using markdown (e.g., \`\`\`python ... \`\`\`).
 - Be encouraging and supportive.
 
 Problem Context:
-Title: ${problem.title}
-Statement: ${problem.statement}
-${problem.constraints ? `Constraints: ${problem.constraints.join(', ')}` : ''}
-${problem.examples && problem.examples.length > 0 ? `Example 1 Input: ${problem.examples[0].input}\nExample 1 Output: ${problem.examples[0].output}` : ''}
-`;
+Title: ${problem.title || 'Untitled'}
+Statement: ${problem.statement || 'No statement provided.'}
+${Array.isArray(problem.constraints) && problem.constraints.length > 0 ? `Constraints: ${problem.constraints.join(', ')}` : ''}
+${Array.isArray(problem.examples) && problem.examples.length > 0 ? `Example 1 Input: ${problem.examples[0].input}\nExample 1 Output: ${problem.examples[0].output}` : ''}`;
 
-    // Gemini expects history in a specific format: { role: "user" / "model", parts: [{ text: "..." }] }
-    // The first message in history can be the system instruction.
-    const geminiHistory = [
-      { role: "user", parts: [{ text: systemInstructionText }] }, // System context as the first "user" turn
-      { role: "model", parts: [{ text: "Understood. I'm ready to help with this problem. How can I assist you?" }] } // AI acknowledges
-    ];
-
-    // Add existing conversation history
-    conversationHistory.forEach(msg => {
-      geminiHistory.push({
-        role: msg.role === 'user' ? 'user' : 'model',
-        parts: [{ text: msg.content }]
-      });
+    // Initialize model with system instruction
+    const chatModel = genAI.getGenerativeModel({ 
+      model: "gemini-1.5-flash",
+      systemInstruction: systemInstruction
     });
 
-    // Current user interaction forms the latest message to send
-    const currentUserMessageContent = `Current user code (if any):\n\`\`\`\n${currentCode || 'No code provided by user.'}\n\`\`\`\n\nUser's question: ${userQuery}`;
+    // Format history for Gemini
+    const history = conversationHistory.map(msg => ({
+      role: msg.role === 'user' ? 'user' : 'model',
+      parts: [{ text: msg.content }]
+    }));
 
-
-    // For the SDK's chat model, you start a chat with history and then send messages.
-    // The `systemInstruction` is best passed during model initialization or as the first turn for context.
-    const chat = model.startChat({
-      history: geminiHistory, // History now includes the initial system context + user/model turns
+    const chat = chatModel.startChat({
+      history: history,
       generationConfig,
       safetySettings,
     });
 
-    const result = await chat.sendMessage(currentUserMessageContent); // Send only the new user query
+    const currentUserMessageContent = `Current user code (if any):\n\`\`\`\n${currentCode || 'No code provided.'}\n\`\`\`\n\nUser's question: ${userQuery}`;
+
+    const result = await chat.sendMessage(currentUserMessageContent);
     const response = result.response;
 
-    if (!response || !response.candidates || response.candidates.length === 0) {
-     console.warn("Gemini AI: No candidates in response", response);
-     return "I'm sorry, I couldn't generate a response at this time.";
+    if (!response || !result.response.text()) {
+      throw new Error("Empty response from Gemini");
     }
 
-    if (response.candidates[0].finishReason === "SAFETY") {
-        console.warn("Gemini response blocked due to safety settings.");
-        return "I'm sorry, your request was blocked due to safety settings. Please rephrase your query or check the content.";
-    }
-    if (response.candidates[0].finishReason === "RECITATION") {
-         console.warn("Gemini response blocked due to recitation.");
-         return "I'm sorry, my response was blocked as it may have contained information from the training data. Please try rephrasing.";
-    }
-    if (response.candidates[0].finishReason !== "STOP" && response.candidates[0].finishReason !== "MAX_TOKENS") {
-        console.warn(`Gemini response stopped due to: ${response.candidates[0].finishReason}`);
-        return "I'm sorry, I couldn't complete my response. Please try again.";
-    }
-
-
-    const aiText = response.text(); // SDK provides a convenience method to get text
-    return aiText;
-
+    return response.text();
   } catch (error) {
-    console.error('Gemini AI service error:', error);
-    // Provide a more specific error if possible, otherwise generic
-    if (error.message && error.message.includes("API key not valid")) {
-      return "AI assistant configuration error: Invalid API Key. Please contact support.";
+    console.error('Gemini AI help error:', error);
+    if (error.message?.includes("API key not valid")) {
+      return "AI configuration error: Invalid API Key.";
     }
-    return "I'm sorry, I encountered an internal error while processing your request. Please try again later.";
+    return "I encountered an error while processing your request. Please try again later.";
   }
 }

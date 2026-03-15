@@ -220,71 +220,101 @@ const ProblemHeader = ({ title, difficulty, tags }) => (
     );
   };
 
-  const SolutionContent = ({ solution }) => (
-    <div>
-      <h3 className="text-lg font-semibold text-slate-100 mb-4">
-        Official Solution
-      </h3>
-      {solution ? (
-        <div className="prose prose-sm sm:prose-base prose-invert max-w-none text-slate-300 prose-code:text-cyan-300 prose-strong:text-slate-100 prose-headings:text-slate-100">
-          <div
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(
-                solution.explanation || "<p>Explanation not available.</p>"
-              ),
-            }}
-          />
-          {solution.code && (
-            <div className="mt-6 not-prose">
-              <h4 className="text-base font-semibold text-slate-200 mb-2">
-                Solution Code ({solution.language || "N/A"})
-              </h4>
-              <div className="border border-slate-700 rounded-md overflow-hidden min-h-[200px] max-h-[400px] resize-y">
-                <Editor
-                  height="100%" // Ensure Editor fills its container for resize to work
-                  language={solution.language?.toLowerCase() || "plaintext"}
-                  value={solution.code || ""}
-                  theme="vs-dark"
-                  options={{
-                    readOnly: true,
-                    minimap: { enabled: false },
-                    fontSize: 13,
-                    scrollBeyondLastLine: false,
-                    automaticLayout: true, // Important for responsive resizing
-                    wordWrap: "on",
-                    padding: { top: 10, bottom: 10 },
-                  }}
-                />
-              </div>
-            </div>
-          )}
-          {solution.complexity && (
-            <div className="mt-6 not-prose">
-              <h4 className="text-base font-semibold text-slate-200 mb-2">
-                Complexity Analysis
-              </h4>
-              <ul className="list-disc pl-5 space-y-1 text-slate-400 text-sm">
-                {solution.complexity.time && (
-                  <li>
-                    <strong>Time:</strong> {solution.complexity.time}
-                  </li>
-                )}
-                {solution.complexity.space && (
-                  <li>
-                    <strong>Space:</strong> {solution.complexity.space}
-                  </li>
-                )}
-              </ul>
-            </div>
-          )}
+  const SolutionContent = ({ solution, error }) => {
+    if (error === "locked") {
+      return (
+        <div className="flex flex-col items-center justify-center h-full text-center p-8 space-y-4">
+          <div className="bg-indigo-500/10 p-4 rounded-full">
+            <FiCode className="w-12 h-12 text-indigo-400" />
+          </div>
+          <h3 className="text-xl font-bold text-slate-100">Solution Locked</h3>
+          <p className="text-slate-400 max-w-sm">
+            You need to solve this problem first to view the official solution. Keep trying!
+          </p>
+          <div className="bg-slate-700/50 p-4 rounded-lg border border-slate-600 max-w-sm">
+            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-2">Hint</p>
+            <p className="text-sm text-slate-300 italic">
+              "Try looking at the constraints and thinking about the time complexity requirements."
+            </p>
+          </div>
         </div>
-      ) : (
-        <p className="text-slate-400 italic text-sm">
-          The official solution is not yet available.
-        </p>
-      )}
-    </div>
-  );
+      );
+    }
+
+    if (error === "error") {
+      return (
+        <div className="flex flex-col items-center justify-center h-full text-center p-8 space-y-4">
+          <p className="text-red-400">Failed to load solution. Please try again later.</p>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <h3 className="text-lg font-semibold text-slate-100 mb-4">
+          Official Solution
+        </h3>
+        {solution ? (
+          <div className="prose prose-sm sm:prose-base prose-invert max-w-none text-slate-300 prose-code:text-cyan-300 prose-strong:text-slate-100 prose-headings:text-slate-100">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                  solution.explanation || "<p>Explanation not available.</p>"
+                ),
+              }}
+            />
+            {solution.code && (
+              <div className="mt-6 not-prose">
+                <h4 className="text-base font-semibold text-slate-200 mb-2">
+                  Solution Code ({solution.language || "N/A"})
+                </h4>
+                <div className="border border-slate-700 rounded-md overflow-hidden min-h-[200px] max-h-[400px] resize-y">
+                  <Editor
+                    height="100%" // Ensure Editor fills its container for resize to work
+                    language={solution.language?.toLowerCase() || "plaintext"}
+                    value={solution.code || ""}
+                    theme="vs-dark"
+                    options={{
+                      readOnly: true,
+                      minimap: { enabled: false },
+                      fontSize: 13,
+                      scrollBeyondLastLine: false,
+                      automaticLayout: true, // Important for responsive resizing
+                      wordWrap: "on",
+                      padding: { top: 10, bottom: 10 },
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+            {solution.complexity && (
+              <div className="mt-6 not-prose">
+                <h4 className="text-base font-semibold text-slate-200 mb-2">
+                  Complexity Analysis
+                </h4>
+                <ul className="list-disc pl-5 space-y-1 text-slate-400 text-sm">
+                  {solution.complexity.time && (
+                    <li>
+                      <strong>Time:</strong> {solution.complexity.time}
+                    </li>
+                  )}
+                  {solution.complexity.space && (
+                    <li>
+                      <strong>Space:</strong> {solution.complexity.space}
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
+          </div>
+        ) : (
+          <p className="text-slate-400 italic text-sm">
+            The official solution is not yet available.
+          </p>
+        )}
+      </div>
+    );
+  };
 
   const VisualizationContent = ({ assetUrl }) => (
     <div className="flex flex-col items-center">
@@ -326,6 +356,7 @@ const ProblemPanel = ({
   submissions,
   solution,
   tabContentLoading,
+  solutionError,
 }) => {
   const TABS_DEFINITION = [
     {
@@ -420,7 +451,7 @@ const ProblemPanel = ({
                   <SubmissionsContent submissions={submissions} />
                 )}
                 {activeTab === "solution" && (
-                  <SolutionContent solution={solution} />
+                  <SolutionContent solution={solution} error={solutionError} />
                 )}
                 {activeTab === "visualize" && problem?.visualizationAssetUrl && (
                   <VisualizationContent

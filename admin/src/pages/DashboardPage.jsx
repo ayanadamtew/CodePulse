@@ -35,7 +35,7 @@ const DashboardPage = () => {
       ] = await Promise.all([
         api.get("/users?limit=5&sort=-createdAt"),
         api.get("/problems?limit=5&sort=-createdAt"),
-        // api.get("/stats"),
+        api.get("/stats"),
         api.get("/contact/submissions?status=new&limit=5")
       ]);
 
@@ -47,9 +47,7 @@ const DashboardPage = () => {
         totalUsers: statsRes.data?.totalUsers || 0,
         totalProblems: statsRes.data?.totalProblems || 0,
         totalSubmissions: statsRes.data?.totalSubmissions || 0,
-        pendingContactRequests: contactRes.data?.count || 
-                              contactRes.data?.length || 
-                              (contactRes.data?.requests ? contactRes.data.requests.length : 0)
+        pendingContactRequests: statsRes.data?.pendingContactRequests || 0
       });
 
       setError(null);
@@ -187,9 +185,9 @@ const DashboardPage = () => {
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {recentUsers.map((user) => (
-                      <tr key={user.id} className="hover:bg-gray-50">
+                      <tr key={user._id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <Link to={`/users/${user.id}`} className="text-blue-600 hover:text-blue-900">
+                          <Link to={`/users/${user._id}`} className="text-blue-600 hover:text-blue-900">
                             {user.username}
                           </Link>
                         </td>
@@ -237,9 +235,9 @@ const DashboardPage = () => {
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
                     {recentProblems.map((problem) => (
-                      <tr key={problem.id} className="hover:bg-gray-50">
+                      <tr key={problem._id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <Link to={`/problems/${problem.id}`} className="text-blue-600 hover:text-blue-900">
+                          <Link to={`/problems/${problem._id}`} className="text-blue-600 hover:text-blue-900">
                             {problem.title}
                           </Link>
                         </td>

@@ -31,7 +31,7 @@ const AdminLayout = () => {
       >
         <div className="p-4 flex items-center justify-between">
           {isSidebarOpen ? (
-            <h1 className="text-xl font-bold">LeetCoder Admin</h1>
+            <h1 className="text-xl font-bold">CodePulse Admin</h1>
           ) : (
             <h1 className="text-xl font-bold">LC</h1>
           )}

@@ -57,7 +57,7 @@ const ProblemListPage = () => {
       setIsDeleting(true);
       setDeleteId(id);
       await api.delete(`/problems/${id}`);
-      setProblems(problems.filter((problem) => problem.id !== id));
+      setProblems(problems.filter((problem) => problem._id !== id));
     } catch (err) {
       console.error("Error deleting problem:", err);
       alert("Failed to delete problem. Please try again.");
@@ -217,10 +217,10 @@ const ProblemListPage = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {problems?.map((problem) => (
-                  <tr key={problem.id}>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <Link
-                        to={`/problems/${problem.id}`}
+                    <tr key={problem._id}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <Link
+                          to={`/problems/${problem._id}`}
                         className="text-blue-600 hover:text-blue-900"
                       >
                         {problem.title}
@@ -266,17 +266,17 @@ const ProblemListPage = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex space-x-2">
                         <Link
-                          to={`/problems/${problem.id}`}
+                          to={`/problems/${problem._id}`}
                           className="text-blue-600 hover:text-blue-900"
                         >
                           Edit
                         </Link>
                         <button
-                          onClick={() => confirmDelete(problem.id)}
-                          disabled={isDeleting && deleteId === problem.id}
+                          onClick={() => confirmDelete(problem._id)}
+                          disabled={isDeleting && deleteId === problem._id}
                           className="text-red-600 hover:text-red-900 disabled:opacity-50"
                         >
-                          {isDeleting && deleteId === problem.id
+                          {isDeleting && deleteId === problem._id
                             ? "Deleting..."
                             : "Delete"}
                         </button>

@@ -71,7 +71,7 @@ const Navbar = () => {
             <Link to="/" className="flex-shrink-0 flex items-center group" onClick={() => setIsMenuOpen(false)}>
               {/* Simple text logo, can be replaced with an SVG */}
               <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 group-hover:opacity-80 transition-opacity">
-                CodeInfinitum
+                CodePulse
               </span>
             </Link>
           </div>

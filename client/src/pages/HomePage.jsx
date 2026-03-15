@@ -89,7 +89,7 @@ const StackingHeroCards = () => {
     {
       id: "feature-ai-assist",
       type: "featureHighlight",
-      headerTitle: "LeetCoder Features",
+      headerTitle: "CodePulse Features",
       icon: FiCpu,
       featureName: "AI-Powered Assistance",
       description:
@@ -100,7 +100,7 @@ const StackingHeroCards = () => {
     {
       id: "feature-visualizations",
       type: "featureHighlight",
-      headerTitle: "LeetCoder Features",
+      headerTitle: "CodePulse Features",
       icon: FiEye,
       featureName: "Algorithm Visualizations",
       description:
@@ -164,7 +164,7 @@ const StackingHeroCards = () => {
       <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
       <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
       <span className="text-[10px] text-slate-400 ml-2 truncate">
-        {title || "LeetCoder"}
+        {title || "CodePulse"}
       </span>
     </div>
   );
@@ -448,7 +448,7 @@ const HomePage = () => {
               className="text-3xl md:text-4xl font-bold text-slate-100"
               variants={itemVariants}
             >
-              Why Choose LeetCoder?
+              Why Choose CodePulse?
             </motion.h2>
             <motion.p
               className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto"
@@ -548,7 +548,7 @@ const HomePage = () => {
             className="text-lg md:text-xl mb-8 max-w-2xl mx-auto"
             variants={itemVariants}
           >
-            Join thousands of developers mastering interviews with LeetCoder's
+            Join thousands of developers mastering interviews with CodePulse's
             targeted practice and tools.
           </motion.p>
           <motion.div variants={itemVariants}>

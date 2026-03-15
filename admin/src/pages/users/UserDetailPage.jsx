@@ -262,9 +262,9 @@ const UserDetailPage = () => {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {solvedProblems.map((problem) => (
-                    <tr key={problem.id} className="hover:bg-gray-50">
+                    <tr key={problem._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <Link to={`/problems/${problem.id}`} className="text-blue-600 hover:text-blue-900">
+                        <Link to={`/problems/${problem._id}`} className="text-blue-600 hover:text-blue-900">
                           {problem.title}
                         </Link>
                       </td>
@@ -347,7 +347,7 @@ const UserDetailPage = () => {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {recentSubmissions.map((submission) => (
-                    <tr key={submission.id} className="hover:bg-gray-50">
+                    <tr key={submission._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <Link to={`/problems/${submission.problemId}`} className="text-blue-600 hover:text-blue-900">
                           {submission.problemTitle}
