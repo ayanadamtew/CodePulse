@@ -49,12 +49,11 @@ const AnimatedCounter = ({ target, suffix = "" }) => {
 };
 
 /* ─── Feature Card ─────────────────────────────────────── */
-const FeatureCard = ({ icon: Icon, title, description, color = "indigo" }) => {
+const FeatureCard = ({ icon: Icon, title, description, color = "emerald" }) => {
   const colorMap = {
-    indigo:  { bg: "bg-indigo-500/10",  border: "border-indigo-500/20",  icon: "text-indigo-400",  glow: "group-hover:shadow-indigo-500/20" },
-    violet:  { bg: "bg-violet-500/10",  border: "border-violet-500/20",  icon: "text-violet-400",  glow: "group-hover:shadow-violet-500/20" },
-    cyan:    { bg: "bg-cyan-500/10",    border: "border-cyan-500/20",    icon: "text-cyan-400",    glow: "group-hover:shadow-cyan-500/20"   },
     emerald: { bg: "bg-emerald-500/10", border: "border-emerald-500/20", icon: "text-emerald-400", glow: "group-hover:shadow-emerald-500/20" },
+    teal:    { bg: "bg-teal-500/10",    border: "border-teal-500/20",    icon: "text-teal-400",    glow: "group-hover:shadow-teal-500/20" },
+    cyan:    { bg: "bg-cyan-500/10",    border: "border-cyan-500/20",    icon: "text-cyan-400",    glow: "group-hover:shadow-cyan-500/20" },
   };
   const c = colorMap[color];
   return (
@@ -132,61 +131,65 @@ const TestimonialCard = ({ name, role, quote, initials, color }) => (
 
 /* ─── Fan Hero Cards (BackDrop-style) ───────────────────── */
 const FanHeroCards = () => {
+  // Card layout config: [rotate, width, height, zIndex]
+  // BackDrop-style tight fan — gentle rotations, overlapping cards, center tallest
+  const cardLayout = [
+    { rotate: -15, width: 200, height: 320, z: 2, x: -350 },  // far left
+    { rotate: -5, width: 230, height: 370, z: 5, x: -200 },  // inner left
+    { rotate: 0, width: 280, height: 420, z: 9, x: 0 },    // center (hero)
+    { rotate: 5, width: 230, height: 370, z: 5, x: 200 },   // inner right
+    { rotate: 15, width: 200, height: 320, z: 2, x: 350 },   // far right
+  ];
+
   const cards = [
     {
       id: "topics",
-      rotate: -40,
-      yOffset: 20,
-      xOffset: -240,
       bg: "linear-gradient(150deg, #1e1b4b 0%, #0f172a 100%)",
-      borderColor: "rgba(99,102,241,0.2)",
+      borderColor: "rgba(16,185,129,0.2)",
       content: (
-        <div className="h-full flex flex-col p-5 gap-3">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-              <FiHash className="w-4 h-4 text-slate-300" />
+        <div className="h-full flex flex-col p-4 gap-2">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+              <FiHash className="w-3.5 h-3.5 text-slate-300" />
             </div>
-            <span className="text-xs font-semibold text-slate-200 uppercase tracking-widest">Topics</span>
+            <span className="text-[10px] font-semibold text-slate-200 uppercase tracking-widest">Topics</span>
           </div>
-          {["Arrays", "Trees", "Graphs", "Dynamic Programming"].map((t, i) => (
-            <div key={t} className="flex items-center gap-3 px-3 py-2.5 rounded-xl border border-white/5 bg-white/[0.02]">
-              <div className="w-2 h-2 rounded-full bg-slate-400 flex-shrink-0" />
-              <span className="text-sm font-medium text-slate-300">{t}</span>
-              <span className="ml-auto text-xs text-slate-500 font-mono">{[42, 28, 35, 51][i]}</span>
+          {["Arrays", "Trees", "Graphs", "DP"].map((t, i) => (
+            <div key={t} className="flex items-center gap-2 px-2.5 py-2 rounded-lg border border-white/5 bg-white/[0.02]">
+              <div className="w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0" />
+              <span className="text-xs font-medium text-slate-300">{t}</span>
+              <span className="ml-auto text-[10px] text-slate-500 font-mono">{[42, 28, 35, 51][i]}</span>
             </div>
           ))}
-          <div className="mt-auto text-center pt-2 border-t border-white/5">
-            <span className="text-xs text-slate-500 font-medium">+ 8 more topics</span>
+          <div className="mt-auto text-center pt-1.5 border-t border-white/5">
+            <span className="text-[10px] text-slate-500 font-medium">+ 8 more</span>
           </div>
         </div>
       ),
     },
     {
       id: "ai",
-      rotate: -20,
-      yOffset: -30,
-      xOffset: -120,
       bg: "linear-gradient(150deg, #2e1065 0%, #0f172a 100%)",
-      borderColor: "rgba(139,92,246,0.3)",
+      borderColor: "rgba(5,150,105,0.3)",
       content: (
-        <div className="h-full flex flex-col p-5 gap-3">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
-              <FiMessageSquare className="w-4 h-4 text-white" />
+        <div className="h-full flex flex-col p-4 gap-2">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-7 h-7 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
+              <FiMessageSquare className="w-3.5 h-3.5 text-white" />
             </div>
-            <span className="text-xs font-semibold text-white uppercase tracking-widest">AI Feedback</span>
+            <span className="text-[10px] font-semibold text-white uppercase tracking-widest">AI Feedback</span>
           </div>
-          <div className="flex flex-col gap-3 flex-1">
-            <div className="px-4 py-3 rounded-2xl rounded-tl-sm text-sm text-slate-300 leading-relaxed border border-white/5 bg-white/[0.03]">
-              I'm stuck on Two Sum. How do I avoid O(n²)?
+          <div className="flex flex-col gap-2.5 flex-1">
+            <div className="px-3 py-2.5 rounded-2xl rounded-tl-sm text-xs text-slate-300 leading-relaxed border border-white/5 bg-white/[0.03]">
+              How do I avoid O(n²) for Two Sum?
             </div>
-            <div className="px-4 py-3 rounded-2xl rounded-tr-sm text-sm text-slate-100 leading-relaxed border border-white/20 bg-white/10 shadow-lg shadow-black/20">
-              ✨ Try a hash map! Store each number as you iterate — look up <code className="text-white font-mono bg-white/10 px-1 py-0.5 rounded">target - num</code> in O(1).
+            <div className="px-3 py-2.5 rounded-2xl rounded-tr-sm text-xs text-slate-100 leading-relaxed border border-white/20 bg-white/10 shadow-lg shadow-black/20">
+              ✨ Use a hash map — look up <code className="text-white font-mono bg-white/10 px-1 py-0.5 rounded text-[10px]">target-num</code> in O(1).
             </div>
-            <div className="flex items-center gap-2 mt-auto px-3 py-2.5 rounded-xl border border-white/10 bg-black/40">
-              <span className="text-xs text-slate-500 flex-1 ml-1">Ask AI anything...</span>
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
-                <FiArrowRight className="w-3 h-3 text-white" />
+            <div className="flex items-center gap-2 mt-auto px-2.5 py-2 rounded-lg border border-white/10 bg-black/40">
+              <span className="text-[10px] text-slate-500 flex-1">Ask AI anything...</span>
+              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center">
+                <FiArrowRight className="w-2.5 h-2.5 text-white" />
               </div>
             </div>
           </div>
@@ -195,89 +198,83 @@ const FanHeroCards = () => {
     },
     {
       id: "code",
-      rotate: 0,
-      yOffset: -80,
-      xOffset: 0,
       bg: "linear-gradient(160deg, #0f172a 0%, #020617 100%)",
       borderColor: "rgba(34,211,238,0.4)",
       glow: true,
       content: (
         <div className="h-full flex flex-col relative z-20">
           {/* Window chrome */}
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.02] flex-shrink-0">
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-600" />
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-600" />
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-600" />
-            <span className="text-xs font-medium text-slate-400 ml-3">two_sum.py</span>
+          <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/10 bg-white/[0.02] flex-shrink-0">
+            <span className="w-2 h-2 rounded-full bg-slate-600" />
+            <span className="w-2 h-2 rounded-full bg-slate-600" />
+            <span className="w-2 h-2 rounded-full bg-slate-600" />
+            <span className="text-xs font-medium text-slate-400 ml-2">two_sum.py</span>
             <span className="ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full border border-white/20 text-white bg-white/5 tracking-wide">EASY</span>
           </div>
-          <div className="flex-1 p-5 font-mono text-sm leading-[1.6] overflow-hidden text-slate-300">
+          <div className="flex-1 p-4 font-mono text-xs leading-[1.7] overflow-hidden text-slate-300">
             <div><span className="text-slate-500"># O(n) Time Complexity</span></div>
-            <div className="mt-2">
+            <div className="mt-1.5">
               <span className="text-white font-semibold">def </span>
               <span className="text-slate-200">two_sum</span>
               <span>(nums, target):</span>
             </div>
-            <div className="ml-4"><span>lookup </span><span className="text-slate-500">= </span><span>{"{}"}</span></div>
-            <div className="ml-4">
+            <div className="ml-3"><span>lookup </span><span className="text-slate-500">= </span><span>{"{}"}</span></div>
+            <div className="ml-3">
               <span className="text-white font-semibold">for </span>
               <span>i, num </span>
               <span className="text-white font-semibold">in </span>
               <span className="text-slate-200">enumerate</span>
               <span>(nums):</span>
             </div>
-            <div className="ml-8"><span className="text-slate-500">comp </span><span>= target </span><span className="text-slate-500">- </span><span>num</span></div>
-            <div className="ml-8">
+            <div className="ml-6"><span className="text-slate-500">comp </span><span>= target </span><span className="text-slate-500">- </span><span>num</span></div>
+            <div className="ml-6">
               <span className="text-white font-semibold">if </span>
               <span>comp </span>
               <span className="text-white font-semibold">in </span>
               <span>lookup:</span>
             </div>
-            <div className="ml-12">
+            <div className="ml-9">
               <span className="text-white font-semibold">return </span>
               <span>[lookup[comp], i]</span>
             </div>
-            <div className="ml-8"><span>lookup[num] </span><span className="text-slate-500">= </span><span>i</span></div>
+            <div className="ml-6"><span>lookup[num] </span><span className="text-slate-500">= </span><span>i</span></div>
           </div>
-          <div className="flex items-center justify-between px-4 py-3 flex-shrink-0 border-t border-white/10 bg-white/5">
-            <span className="text-xs font-semibold text-white flex items-center gap-1.5"><FiCheckCircle className="w-4 h-4" /> Tests Passing</span>
-            <span className="text-xs text-slate-400 font-mono">14ms runtime</span>
+          <div className="flex items-center justify-between px-4 py-2.5 flex-shrink-0 border-t border-white/10 bg-white/5">
+            <span className="text-[11px] font-semibold text-white flex items-center gap-1.5"><FiCheckCircle className="w-3.5 h-3.5" /> Tests Passing</span>
+            <span className="text-[10px] text-slate-400 font-mono">14ms</span>
           </div>
         </div>
       ),
     },
     {
       id: "stats",
-      rotate: 20,
-      yOffset: -30,
-      xOffset: 120,
       bg: "linear-gradient(150deg, #064e3b 0%, #0f172a 100%)",
       borderColor: "rgba(16,185,129,0.3)",
       content: (
-        <div className="h-full flex flex-col p-5 gap-4">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
-              <FiTrendingUp className="w-4 h-4 text-white" />
+        <div className="h-full flex flex-col p-4 gap-3">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-7 h-7 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center">
+              <FiTrendingUp className="w-3.5 h-3.5 text-white" />
             </div>
-            <span className="text-xs font-semibold text-white uppercase tracking-widest">Progress</span>
+            <span className="text-[10px] font-semibold text-white uppercase tracking-widest">Progress</span>
           </div>
           {/* Mini bar chart */}
-          <div className="flex items-end gap-1.5 h-24 px-1 mt-2">
+          <div className="flex items-end gap-1 h-16 px-1">
             {[40, 65, 45, 80, 60, 95, 75].map((h, i) => (
               <div key={i} className="flex-1 rounded-t-sm transition-all" style={{ height: `${h}%`, background: i === 5 ? '#ffffff' : 'rgba(255,255,255,0.2)', boxShadow: i === 5 ? '0 0 10px rgba(255,255,255,0.5)' : 'none' }} />
             ))}
           </div>
-          <div className="flex justify-between text-[10px] font-medium text-slate-500 px-1.5 mt-1">
-            {['M','T','W','T','F','S','S'].map(d => <span key={d}>{d}</span>)}
+          <div className="flex justify-between text-[9px] font-medium text-slate-500 px-1">
+            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map(d => <span key={d}>{d}</span>)}
           </div>
-          <div className="mt-auto grid grid-cols-2 gap-3">
-            <div className="text-center px-3 py-2 rounded-xl border border-white/10 bg-white/[0.03]">
-              <div className="text-xl font-bold text-white mb-0.5">47</div>
-              <div className="text-[10px] text-slate-400 font-medium uppercase tracking-wider">Solved</div>
+          <div className="mt-auto grid grid-cols-2 gap-2">
+            <div className="text-center px-2 py-1.5 rounded-lg border border-white/10 bg-white/[0.03]">
+              <div className="text-lg font-bold text-white">47</div>
+              <div className="text-[9px] text-slate-400 font-medium uppercase tracking-wider">Solved</div>
             </div>
-            <div className="text-center px-3 py-2 rounded-xl border border-white/10 bg-white/[0.03]">
-              <div className="text-xl font-bold text-white mb-0.5">7</div>
-              <div className="text-[10px] text-slate-400 font-medium uppercase tracking-wider">Streak</div>
+            <div className="text-center px-2 py-1.5 rounded-lg border border-white/10 bg-white/[0.03]">
+              <div className="text-lg font-bold text-white">7</div>
+              <div className="text-[9px] text-slate-400 font-medium uppercase tracking-wider">Streak</div>
             </div>
           </div>
         </div>
@@ -285,32 +282,29 @@ const FanHeroCards = () => {
     },
     {
       id: "award",
-      rotate: 40,
-      yOffset: 20,
-      xOffset: 240,
       bg: "linear-gradient(150deg, #4c1d95 0%, #0f172a 100%)",
       borderColor: "rgba(167,139,250,0.3)",
       content: (
-        <div className="h-full flex flex-col p-5 gap-3">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-              <FiAward className="w-4 h-4 text-slate-300" />
+        <div className="h-full flex flex-col p-4 gap-2">
+          <div className="flex items-center gap-2 mb-1">
+            <div className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
+              <FiAward className="w-3.5 h-3.5 text-slate-300" />
             </div>
-            <span className="text-xs font-semibold text-slate-200 uppercase tracking-widest">Milestones</span>
+            <span className="text-[10px] font-semibold text-slate-200 uppercase tracking-widest">Milestones</span>
           </div>
           {[
             { icon: FiCode, label: "First Solve", sub: "Completed", done: true },
             { icon: FiZap, label: "Speed Coder", sub: "Under 5 min", done: true },
             { icon: FiLayers, label: "DP Master", sub: "15/20 done", done: false },
             { icon: FiTrendingUp, label: "7-Day Streak", sub: "Keep going", done: true },
-          ].map(({ icon: Icon, label, sub, done }, index) => (
-            <div key={label} className="flex items-center gap-3 px-3 py-2.5 rounded-xl border" style={{ background: done ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.01)', borderColor: done ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)' }}>
-              <Icon className={`w-4 h-4 ${done ? 'text-white' : 'text-slate-600'}`} />
+          ].map(({ icon: Icon, label, sub, done }) => (
+            <div key={label} className="flex items-center gap-2 px-2.5 py-2 rounded-lg border" style={{ background: done ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.01)', borderColor: done ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)' }}>
+              <Icon className={`w-3.5 h-3.5 ${done ? 'text-white' : 'text-slate-600'}`} />
               <div className="flex-1 min-w-0">
-                <p className={`text-xs font-semibold ${done ? 'text-white' : 'text-slate-500'}`}>{label}</p>
-                <p className="text-[10px] font-medium text-slate-500">{sub}</p>
+                <p className={`text-[10px] font-semibold ${done ? 'text-white' : 'text-slate-500'}`}>{label}</p>
+                <p className="text-[9px] font-medium text-slate-500">{sub}</p>
               </div>
-              {done && <FiCheckCircle className="w-3.5 h-3.5 text-slate-400" />}
+              {done && <FiCheckCircle className="w-3 h-3 text-slate-400" />}
             </div>
           ))}
         </div>
@@ -319,47 +313,53 @@ const FanHeroCards = () => {
   ];
 
   return (
-    <div className="relative w-full flex items-end justify-center mt-16 mt-0 lg:mt-12 pb-16" style={{ height: '560px', perspective: '1500px' }}>
-      {cards.map((card, i) => (
-        <motion.div
-          key={card.id}
-          className="absolute bottom-16 rounded-[28px] overflow-hidden flex-shrink-0"
-          style={{
-            width: i === 2 ? '360px' : '280px',
-            height: i === 2 ? '500px' : '420px',
-            background: card.bg,
-            border: `1px solid ${card.borderColor}`,
-            transformOrigin: 'bottom center',
-            transform: `rotate(${card.rotate}deg) translate(${card.xOffset}px, ${card.yOffset}px)`,
-            zIndex: i === 2 ? 10 : Math.abs(i - 2) === 1 ? 8 : 5,
-            boxShadow: card.glow
-              ? '0 0 60px rgba(255,255,255,0.15), 0 30px 80px rgba(0,0,0,0.8)'
-              : '0 20px 60px rgba(0,0,0,0.7)',
-          }}
-          initial={{ opacity: 0, y: 120, rotate: card.rotate }}
-          animate={{ opacity: 1, y: card.yOffset, rotate: card.rotate }}
-          transition={{
-            duration: 0.9,
-            delay: 0.2 + Math.abs(i - 2) * 0.1,
-            ease: [0.2, 0.8, 0.2, 1],
-          }}
-          whileHover={{
-            y: card.yOffset - 24,
-            zIndex: 20,
-            scale: 1.05,
-            boxShadow: card.glow
-              ? '0 0 80px rgba(255,255,255,0.25), 0 40px 100px rgba(0,0,0,0.9)'
-              : '0 30px 80px rgba(0,0,0,0.8)',
-            transition: { duration: 0.3, ease: "easeOut" },
-          }}
-        >
-          {card.content}
-        </motion.div>
-      ))}
+    <div className="relative w-full flex items-end justify-center" style={{ height: '480px', perspective: '1200px' }}>
+      {cards.map((card, i) => {
+        const layout = cardLayout[i];
+        return (
+          <motion.div
+            key={card.id}
+            className="absolute rounded-[20px] overflow-hidden flex-shrink-0"
+            style={{
+              width: `${layout.width}px`,
+              height: `${layout.height}px`,
+              bottom: '0px',
+              background: card.bg,
+              border: `1px solid ${card.borderColor}`,
+              transformOrigin: 'center bottom',
+              // Removed transform from here, let Framer Motion handle it via x/y/rotate
+              zIndex: layout.z,
+              boxShadow: card.glow
+                ? '0 0 60px rgba(255,255,255,0.15), 0 30px 80px rgba(0,0,0,0.8)'
+                : '0 20px 60px rgba(0,0,0,0.7)',
+            }}
+            // Added x here
+            initial={{ opacity: 0, y: 100, x: layout.x, rotate: layout.rotate }}
+            animate={{ opacity: 1, y: 0, x: layout.x, rotate: layout.rotate }}
+            transition={{
+              duration: 0.9,
+              delay: 0.2 + Math.abs(i - 2) * 0.1,
+              ease: [0.2, 0.8, 0.2, 1],
+            }}
+            whileHover={{
+              y: -20,
+              x: layout.x, // Keep the x position on hover so it doesn't snap to center
+              zIndex: 20,
+              scale: 1.04,
+              boxShadow: card.glow
+                ? '0 0 80px rgba(255,255,255,0.25), 0 40px 100px rgba(0,0,0,0.9)'
+                : '0 30px 80px rgba(0,0,0,0.8)',
+              transition: { duration: 0.3, ease: "easeOut" },
+            }}
+          >
+            {card.content}
+          </motion.div>
+        );
+      })}
 
       {/* Reflection / floor glow */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-32 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.06) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-24 rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 70%)', filter: 'blur(25px)' }} />
     </div>
   );
 };
@@ -370,22 +370,22 @@ const HomePage = () => {
 
   const stats = [
     { value: 1500, suffix: "+", label: "Developers Practicing" },
-    { value: 300,  suffix: "+", label: "Curated Problems" },
-    { value: 12,   suffix: "",  label: "Topic Areas" },
-    { value: 98,   suffix: "%", label: "Interview Success Rate" },
+    { value: 300, suffix: "+", label: "Curated Problems" },
+    { value: 12, suffix: "", label: "Topic Areas" },
+    { value: 98, suffix: "%", label: "Interview Success Rate" },
   ];
 
   const features = [
-    { icon: FiLayers,     title: "Curated Problem Set",      color: "indigo",  description: "Hundreds of problems spanning core data structures, algorithms, and common interview patterns — all handpicked by engineers." },
-    { icon: FiCpu,        title: "AI-Powered Hints",          color: "violet",  description: "Stuck? Our AI assistant analyzes your code and provides contextual hints, step-by-step without spoiling the answer." },
-    { icon: FiEye,        title: "Algorithm Visualizations",  color: "cyan",    description: "See algorithms come to life with interactive step-by-step visualizations. Understand deeply, not just memorize." },
-    { icon: FiTrendingUp, title: "Progress Tracking",         color: "emerald", description: "Track performance across topics, spot weak areas, and see your skills grow over time with detailed stats." },
+    { icon: FiLayers, title: "Curated Problem Set", color: "emerald", description: "Hundreds of problems spanning core data structures, algorithms, and common interview patterns — all handpicked by engineers." },
+    { icon: FiCpu, title: "AI-Powered Hints", color: "teal", description: "Stuck? Our AI assistant analyzes your code and provides contextual hints, step-by-step without spoiling the answer." },
+    { icon: FiEye, title: "Algorithm Visualizations", color: "cyan", description: "See algorithms come to life with interactive step-by-step visualizations. Understand deeply, not just memorize." },
+    { icon: FiTrendingUp, title: "Progress Tracking", color: "emerald", description: "Track performance across topics, spot weak areas, and see your skills grow over time with detailed stats." },
   ];
 
   const steps = [
-    { number: 1, icon: FiCode,         title: "Pick a Problem",      description: "Browse 300+ problems by difficulty, topic, or company tag" },
-    { number: 2, icon: FiTerminal,     title: "Write Your Solution",  description: "Code in our full-featured browser IDE with live feedback" },
-    { number: 3, icon: FiCheckCircle,  title: "Get AI Feedback",      description: "Instantly get hints, explanations, and optimization tips" },
+    { number: 1, icon: FiCode, title: "Pick a Problem", description: "Browse 300+ problems by difficulty, topic, or company tag" },
+    { number: 2, icon: FiTerminal, title: "Write Your Solution", description: "Code in our full-featured browser IDE with live feedback" },
+    { number: 3, icon: FiCheckCircle, title: "Get AI Feedback", description: "Instantly get hints, explanations, and optimization tips" },
   ];
 
   const topics = [
@@ -396,17 +396,17 @@ const HomePage = () => {
   const testimonials = [
     {
       name: "Rahul Mehta", role: "SWE @ Google", initials: "RM",
-      color: "bg-gradient-to-br from-indigo-500 to-violet-600",
+      color: "bg-gradient-to-br from-emerald-500 to-teal-600",
       quote: "CodePulse's AI hints guide you without giving it all away. Landed my Google offer after 3 months of daily practice here.",
     },
     {
       name: "Aisha Johnson", role: "Backend Engineer @ Stripe", initials: "AJ",
-      color: "bg-gradient-to-br from-cyan-500 to-indigo-500",
+      color: "bg-gradient-to-br from-cyan-500 to-emerald-500",
       quote: "The algorithm visualizations finally made dynamic programming click for me. No other platform explained it this well.",
     },
     {
       name: "Carlos Rivera", role: "CS Student, MIT", initials: "CR",
-      color: "bg-gradient-to-br from-violet-600 to-emerald-500",
+      color: "bg-gradient-to-br from-teal-600 to-emerald-500",
       quote: "I've tried LeetCode, HackerRank, and others — CodePulse's clean UI and AI assistant made practice feel less overwhelming.",
     },
   ];
@@ -415,12 +415,12 @@ const HomePage = () => {
     <div className="bg-[#050816] text-slate-200 min-h-screen overflow-hidden">
 
       {/* ── Hero ──────────────────────────────────────────── */}
-      <section className="relative flex flex-col items-center overflow-hidden mesh-bg" style={{ minHeight: '100vh' }}>
+      <section className="relative flex flex-col items-center mesh-bg" style={{ minHeight: '100vh' }}>
 
         {/* Ambient orbs */}
         <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div className="absolute rounded-full animate-float-1" style={{ width: 700, height: 700, background: 'radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%)', top: '-15%', left: '-15%', opacity: 0.8 }} />
-          <div className="absolute rounded-full animate-float-2" style={{ width: 550, height: 550, background: 'radial-gradient(circle, rgba(139,92,246,0.14) 0%, transparent 70%)', top: '20%', right: '-12%', opacity: 0.7 }} />
+          <div className="absolute rounded-full animate-float-1" style={{ width: 700, height: 700, background: 'radial-gradient(circle, rgba(16,185,129,0.18) 0%, transparent 70%)', top: '-15%', left: '-15%', opacity: 0.8 }} />
+          <div className="absolute rounded-full animate-float-2" style={{ width: 550, height: 550, background: 'radial-gradient(circle, rgba(5,150,105,0.14) 0%, transparent 70%)', top: '20%', right: '-12%', opacity: 0.7 }} />
           <div className="absolute rounded-full animate-float-3" style={{ width: 400, height: 400, background: 'radial-gradient(circle, rgba(34,211,238,0.1) 0%, transparent 70%)', bottom: '0%', left: '25%', opacity: 0.6 }} />
           {/* Grid overlay */}
           <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)', backgroundSize: '64px 64px', opacity: 1 }} />
@@ -428,22 +428,22 @@ const HomePage = () => {
 
         {/* ── Hero text (centered, top) */}
         <motion.div
-          className="w-full max-w-3xl mx-auto px-6 pt-24 pb-8 flex flex-col items-center text-center"
+          className="w-full max-w-3xl mx-auto px-6 pt-16 pb-4 flex flex-col items-center text-center"
           variants={stagger}
           initial="hidden"
           animate="visible"
         >
           {/* Badge */}
-          <motion.div variants={fadeUp} className="flex items-center gap-2 mb-7">
-            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full" style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.25)' }}>
+          <motion.div variants={fadeUp} className="flex items-center gap-2 mb-5">
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full" style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)' }}>
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-dot-pulse" />
-              <span className="text-xs font-medium text-indigo-300">Trusted by 1,500+ developers</span>
+              <span className="text-xs font-medium text-emerald-300">Trusted by 1,500+ developers</span>
             </div>
           </motion.div>
 
           {/* Headline */}
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.06] tracking-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.06] tracking-tight mb-4"
             variants={fadeUp}
           >
             <span className="text-white">Master Algorithms,</span>
@@ -453,7 +453,7 @@ const HomePage = () => {
 
           {/* Subheadline */}
           <motion.p
-            className="text-base md:text-lg text-slate-400 mb-10 max-w-xl leading-relaxed"
+            className="text-base md:text-lg text-slate-400 mb-6 max-w-xl leading-relaxed"
             variants={fadeUp}
           >
             Sharpen your skills with curated problems,{" "}
@@ -463,13 +463,13 @@ const HomePage = () => {
 
           {/* CTAs */}
           <motion.div
-            className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mb-10"
+            className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto mb-5"
             variants={fadeUp}
           >
             <Link
               to="/problems"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-base font-semibold text-white transition-all duration-300 hover:scale-[1.04]"
-              style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', boxShadow: '0 4px 24px rgba(99,102,241,0.4)' }}
+              style={{ background: 'linear-gradient(135deg, #10b981, #059669)', boxShadow: '0 4px 24px rgba(16,185,129,0.4)' }}
             >
               Start Practicing Now <FiArrowRight className="w-4 h-4" />
             </Link>
@@ -487,7 +487,7 @@ const HomePage = () => {
           {/* Social proof row */}
           <motion.div variants={fadeUp} className="flex items-center gap-3">
             <div className="flex -space-x-2">
-              {["RM","AJ","CR","SK","LT"].map((initials, i) => (
+              {["RM", "AJ", "CR", "SK", "LT"].map((initials, i) => (
                 <div key={i} className="w-7 h-7 rounded-full border-2 border-[#050816] flex items-center justify-center text-[10px] font-bold text-white"
                   style={{ background: `hsl(${240 + i * 30}, 75%, 52%)` }}>
                   {initials}
@@ -502,7 +502,7 @@ const HomePage = () => {
 
         {/* ── Fan Cards */}
         <motion.div
-          className="w-full max-w-5xl mx-auto px-4 mt-4"
+          className="w-full max-w-5xl mx-auto px-4 mt-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
@@ -539,7 +539,7 @@ const HomePage = () => {
       <section id="features-section" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
           <motion.div className="text-center mb-16" variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}>
-            <motion.p variants={fadeUp} className="text-sm font-semibold text-indigo-400 uppercase tracking-widest mb-3">Features</motion.p>
+            <motion.p variants={fadeUp} className="text-sm font-semibold text-emerald-400 uppercase tracking-widest mb-3">Features</motion.p>
             <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold text-white mb-4">
               Why Choose <span className="gradient-text">CodePulse?</span>
             </motion.h2>
@@ -560,7 +560,7 @@ const HomePage = () => {
       <section className="py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-6 md:px-10">
           <motion.div className="text-center mb-16" variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}>
-            <motion.p variants={fadeUp} className="text-sm font-semibold text-violet-400 uppercase tracking-widest mb-3">How It Works</motion.p>
+            <motion.p variants={fadeUp} className="text-sm font-semibold text-teal-400 uppercase tracking-widest mb-3">How It Works</motion.p>
             <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-bold text-white mb-4">
               Your path to <span className="gradient-text">mastery</span>
             </motion.h2>
@@ -570,16 +570,16 @@ const HomePage = () => {
           </motion.div>
           <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative" variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}>
             <div className="hidden md:block absolute top-8 left-[calc(16.67%+32px)] right-[calc(16.67%+32px)] h-px"
-              style={{ background: 'linear-gradient(to right, rgba(99,102,241,0.4), rgba(139,92,246,0.2), rgba(99,102,241,0.4))' }} />
+              style={{ background: 'linear-gradient(to right, rgba(16,185,129,0.4), rgba(5,150,105,0.2), rgba(16,185,129,0.4))' }} />
             {steps.map((step) => <StepCard key={step.number} {...step} />)}
           </motion.div>
           <motion.div className="text-center mt-14" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <Link
               to="/problems"
               className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl text-base font-semibold text-white transition-all duration-300 hover:scale-[1.03] group"
-              style={{ border: '1px solid rgba(99,102,241,0.3)' }}
+              style={{ border: '1px solid rgba(16,185,129,0.3)' }}
             >
-              <FiPlay className="w-4 h-4 text-indigo-400 group-hover:scale-125 transition-transform" />
+              <FiPlay className="w-4 h-4 text-emerald-400 group-hover:scale-125 transition-transform" />
               See It In Action
             </Link>
           </motion.div>
@@ -607,7 +607,7 @@ const HomePage = () => {
             <Link
               to="/topics"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-base font-semibold text-white transition-all duration-300 hover:scale-[1.04]"
-              style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', boxShadow: '0 4px 24px rgba(99,102,241,0.35)' }}
+              style={{ background: 'linear-gradient(135deg, #10b981, #059669)', boxShadow: '0 4px 24px rgba(16,185,129,0.35)' }}
             >
               Explore All Topics <FiArrowRight className="w-4 h-4" />
             </Link>
@@ -635,14 +635,14 @@ const HomePage = () => {
 
       {/* ── Final CTA ─────────────────────────────────────── */}
       <section className="py-20 md:py-28 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{ background: 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(139,92,246,0.13) 50%, rgba(99,102,241,0.08) 100%)' }} />
-        <div className="absolute inset-0 -z-10" style={{ borderTop: '1px solid rgba(99,102,241,0.1)', borderBottom: '1px solid rgba(99,102,241,0.1)' }} />
+        <div className="absolute inset-0 -z-10" style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(5,150,105,0.13) 50%, rgba(16,185,129,0.08) 100%)' }} />
+        <div className="absolute inset-0 -z-10" style={{ borderTop: '1px solid rgba(16,185,129,0.1)', borderBottom: '1px solid rgba(16,185,129,0.1)' }} />
         <div aria-hidden className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div className="absolute rounded-full animate-float-1" style={{ width: 500, height: 500, background: 'radial-gradient(circle, rgba(99,102,241,0.6) 0%, transparent 70%)', top: '-20%', right: '-10%', opacity: 0.2 }} />
-          <div className="absolute rounded-full animate-float-2" style={{ width: 400, height: 400, background: 'radial-gradient(circle, rgba(139,92,246,0.6) 0%, transparent 70%)', bottom: '-20%', left: '-5%', opacity: 0.15 }} />
+          <div className="absolute rounded-full animate-float-1" style={{ width: 500, height: 500, background: 'radial-gradient(circle, rgba(16,185,129,0.6) 0%, transparent 70%)', top: '-20%', right: '-10%', opacity: 0.2 }} />
+          <div className="absolute rounded-full animate-float-2" style={{ width: 400, height: 400, background: 'radial-gradient(circle, rgba(5,150,105,0.6) 0%, transparent 70%)', bottom: '-20%', left: '-5%', opacity: 0.15 }} />
         </div>
         <motion.div className="max-w-3xl mx-auto px-6 text-center" variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-60px" }}>
-          <motion.p variants={fadeUp} className="text-sm font-semibold text-indigo-300 uppercase tracking-widest mb-4">Ready to Level Up?</motion.p>
+          <motion.p variants={fadeUp} className="text-sm font-semibold text-emerald-300 uppercase tracking-widest mb-4">Ready to Level Up?</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
             Ready to Land Your <span className="gradient-text">Dream Role?</span>
           </motion.h2>
@@ -654,7 +654,7 @@ const HomePage = () => {
               <>
                 <Link to="/register"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-base font-bold text-white transition-all duration-300 hover:scale-[1.05]"
-                  style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', boxShadow: '0 8px 32px rgba(99,102,241,0.35)' }}
+                  style={{ background: 'linear-gradient(135deg, #10b981, #059669)', boxShadow: '0 8px 32px rgba(16,185,129,0.35)' }}
                 >
                   Get Started Free <FiArrowRight className="w-4 h-4" />
                 </Link>
@@ -668,7 +668,7 @@ const HomePage = () => {
             ) : (
               <Link to="/problems"
                 className="inline-flex items-center gap-2 px-10 py-4 rounded-xl text-base font-bold text-white transition-all duration-300 hover:scale-[1.05]"
-                style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', boxShadow: '0 8px 32px rgba(99,102,241,0.35)' }}
+                style={{ background: 'linear-gradient(135deg, #10b981, #059669)', boxShadow: '0 8px 32px rgba(16,185,129,0.35)' }}
               >
                 Continue Practicing <FiArrowRight className="w-4 h-4" />
               </Link>

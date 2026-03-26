@@ -21,7 +21,7 @@ import {
 // --- Reusable UI Components (Import or define as needed) ---
 const LoadingState = ({ text = "Loading Profile..." }) => (
   <div className="flex flex-col justify-center items-center h-64 text-slate-400 py-10">
-    <FiLoader className="animate-spin h-10 w-10 text-indigo-400 mb-3" />
+    <FiLoader className="animate-spin h-10 w-10 text-emerald-400 mb-3" />
     <p className="text-sm">{text}</p>
   </div>
 );
@@ -43,7 +43,7 @@ const StatCard = ({
   value,
   label,
   icon: Icon,
-  colorClass = "text-indigo-400",
+  colorClass = "text-emerald-400",
 }) => (
   <motion.div
     className="bg-slate-700/50 p-5 rounded-xl border border-slate-700 shadow-md text-center"
@@ -186,7 +186,7 @@ const ProfilePage = () => {
     return (
       <div className="bg-slate-900 min-h-screen pt-16 px-4 text-center text-slate-400">
         Please log in to view your profile.
-        <Link to="/login" className="text-indigo-400 hover:underline ml-2">
+        <Link to="/login" className="text-emerald-400 hover:underline ml-2">
           Login
         </Link>
       </div>
@@ -224,11 +224,11 @@ const ProfilePage = () => {
         {" "}
         {/* Slightly narrower max-width */}
         {/* Profile Header */}
-        <div className="bg-gradient-to-br from-slate-800 via-slate-800 to-indigo-900/50 rounded-xl shadow-lg overflow-hidden mb-8 md:mb-10 border border-slate-700">
+        <div className="bg-gradient-to-br from-slate-800 via-slate-800 to-emerald-900/50 rounded-xl shadow-lg overflow-hidden mb-8 md:mb-10 border border-slate-700">
           <div className="p-6 sm:p-8">
             <div className="flex flex-col sm:flex-row items-center">
               {/* Avatar */}
-              <div className="flex-shrink-0 h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-slate-700 border-2 border-indigo-500/50 flex items-center justify-center text-indigo-300 text-3xl sm:text-4xl font-bold mb-4 sm:mb-0 sm:mr-6">
+              <div className="flex-shrink-0 h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-slate-700 border-2 border-emerald-500/50 flex items-center justify-center text-emerald-300 text-3xl sm:text-4xl font-bold mb-4 sm:mb-0 sm:mr-6">
                 {user?.username?.charAt(0).toUpperCase() || "U"}
               </div>
               {/* User Info */}
@@ -236,7 +236,7 @@ const ProfilePage = () => {
                 <h1 className="text-2xl sm:text-3xl font-bold text-slate-100">
                   {user?.username || "Username"}
                 </h1>
-                <p className="text-sm text-indigo-400 mt-1 flex items-center justify-center sm:justify-start">
+                <p className="text-sm text-emerald-400 mt-1 flex items-center justify-center sm:justify-start">
                   <FiMail className="w-4 h-4 mr-1.5" />{" "}
                   {user?.email || "No email"}
                 </p>
@@ -262,7 +262,7 @@ const ProfilePage = () => {
             transition={{ delay: 0.1 }}
           >
             <h2 className="text-xl sm:text-2xl font-semibold mb-5 text-slate-100 flex items-center">
-              <FiBarChart2 className="w-6 h-6 mr-2 text-indigo-400" /> Your
+              <FiBarChart2 className="w-6 h-6 mr-2 text-emerald-400" /> Your
               Progress
             </h2>
             {/* Stats Grid */}
@@ -323,7 +323,7 @@ const ProfilePage = () => {
           transition={{ delay: 0.2 }}
         >
           <h2 className="text-xl sm:text-2xl font-semibold mb-5 text-slate-100 flex items-center">
-            <FiList className="w-6 h-6 mr-2 text-indigo-400" /> Recently Solved
+            <FiList className="w-6 h-6 mr-2 text-emerald-400" /> Recently Solved
           </h2>
           <div className="bg-slate-800 rounded-xl shadow-lg overflow-hidden border border-slate-700">
             {solvedProblems.length === 0 ? (
@@ -331,7 +331,7 @@ const ProfilePage = () => {
                 No problems solved yet.{" "}
                 <Link
                   to="/problems"
-                  className="text-indigo-400 hover:underline"
+                  className="text-emerald-400 hover:underline"
                 >
                   Start practicing!
                 </Link>
@@ -382,7 +382,7 @@ const ProfilePage = () => {
                             {/* Use Link component for internal navigation */}
                             <Link
                               to={`/problems/${problem.id || problem._id}`}
-                              className="text-indigo-400 hover:text-indigo-300 hover:underline"
+                              className="text-emerald-400 hover:text-emerald-300 hover:underline"
                             >
                               {problem.title || "N/A"}
                             </Link>

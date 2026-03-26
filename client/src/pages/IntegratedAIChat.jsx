@@ -78,7 +78,7 @@ const IntegratedAIChat = ({
         <button
           onClick={onToggleMinimize}
           aria-label="Open AI Assistant"
-          className="bg-indigo-600 text-white p-3 rounded-full shadow-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900 flex items-center"
+          className="bg-emerald-600 text-white p-3 rounded-full shadow-xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900 flex items-center"
         >
           <FiMessageSquare className="h-6 w-6" />
           {problem?.title && <span className="ml-2 text-sm font-medium hidden sm:inline">AI: {problem.title.substring(0,15)}{problem.title.length > 15 ? '...' : ''}</span>}
@@ -104,7 +104,7 @@ const IntegratedAIChat = ({
       {/* Header */}
       <div className="flex items-center justify-between p-3 border-b border-slate-700 bg-slate-800/60 rounded-t-xl md:rounded-t-xl flex-shrink-0"> {/* Added flex-shrink-0 */}
         <div className="flex items-center min-w-0"> {/* Added min-w-0 for better truncation */}
-          <FiMessageSquare className="mr-2 text-indigo-400 h-5 w-5 flex-shrink-0" /> {/* flex-shrink-0 for icon */}
+          <FiMessageSquare className="mr-2 text-emerald-400 h-5 w-5 flex-shrink-0" /> {/* flex-shrink-0 for icon */}
           <h3 className="text-sm font-semibold text-slate-100 truncate">
             AI Assistant {problem?.title ? `- ${problem.title}` : ''}
           </h3>
@@ -142,7 +142,7 @@ const IntegratedAIChat = ({
             <div
               className={`max-w-[85%] px-3.5 py-2.5 rounded-xl text-sm shadow-md break-words /* Added break-words */ ${
                 msg.role === 'user'
-                  ? 'bg-indigo-600 text-white rounded-br-none'
+                  ? 'bg-emerald-600 text-white rounded-br-none'
                   : 'bg-slate-700 text-slate-200 border border-slate-600/50 rounded-bl-none'
               }`}
             >
@@ -184,7 +184,7 @@ const IntegratedAIChat = ({
         <input
           ref={inputRef}
           type="text"
-          className="flex-grow border border-slate-600 bg-slate-700 rounded-l-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-100 placeholder-slate-400"
+          className="flex-grow border border-slate-600 bg-slate-700 rounded-l-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm text-slate-100 placeholder-slate-400"
           placeholder="Ask the AI..."
           value={input}
           onChange={onInputChange}
@@ -194,7 +194,7 @@ const IntegratedAIChat = ({
           type="submit"
           aria-label="Send message"
           disabled={!input.trim() || isLoadingAiResponse}
-          className="bg-indigo-600 text-white px-4 h-[44px] flex items-center justify-center rounded-r-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1 focus:ring-offset-slate-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          className="bg-emerald-600 text-white px-4 h-[44px] flex items-center justify-center rounded-r-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1 focus:ring-offset-slate-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
         >
           <FiSend className="h-5 w-5" />
         </button>

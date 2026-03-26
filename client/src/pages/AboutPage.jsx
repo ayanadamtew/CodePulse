@@ -10,8 +10,8 @@ const AboutPage = () => {
     <div className="bg-slate-900 text-slate-200 min-h-screen px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-3xl mx-auto">
         <header className="text-center mb-12">
-          <FiInfo className="mx-auto text-indigo-400 h-16 w-16 mb-4" />
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-pink-500">
+          <FiInfo className="mx-auto text-emerald-400 h-16 w-16 mb-4" />
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-pink-500">
             About Us
           </h1>
           <p className="mt-4 text-lg text-slate-400">
@@ -21,7 +21,7 @@ const AboutPage = () => {
         </header>
 
         <section className="mb-12 p-6 bg-slate-800 rounded-xl shadow-xl">
-          <h2 className="text-2xl font-semibold text-indigo-300 mb-4 flex items-center">
+          <h2 className="text-2xl font-semibold text-emerald-300 mb-4 flex items-center">
             <FiAward className="mr-3 h-6 w-6" /> Our Mission
           </h2>
           <p className="text-slate-300 leading-relaxed">
@@ -35,7 +35,7 @@ const AboutPage = () => {
         </section>
 
         <section className="mb-12 p-6 bg-slate-800 rounded-xl shadow-xl">
-          <h2 className="text-2xl font-semibold text-indigo-300 mb-4 flex items-center">
+          <h2 className="text-2xl font-semibold text-emerald-300 mb-4 flex items-center">
             <FiCode className="mr-3 h-6 w-6" /> What We Offer
           </h2>
           <ul className="list-disc list-inside space-y-2 text-slate-300 leading-relaxed">
@@ -66,7 +66,7 @@ const AboutPage = () => {
         </section>
 
         <section className="mb-12 p-6 bg-slate-800 rounded-xl shadow-xl">
-          <h2 className="text-2xl font-semibold text-indigo-300 mb-4 flex items-center">
+          <h2 className="text-2xl font-semibold text-emerald-300 mb-4 flex items-center">
             <FiUsers className="mr-3 h-6 w-6" /> Our Team
           </h2>
           <p className="text-slate-300 leading-relaxed">
@@ -82,7 +82,7 @@ const AboutPage = () => {
               <h3 className="text-xl font-bold text-white mb-1">
                 Ayana Damtew
               </h3>
-              <p className="text-indigo-300 font-medium mb-2">
+              <p className="text-emerald-300 font-medium mb-2">
                 Co-founder and CTO
               </p>
               <p className="text-slate-300 text-sm leading-relaxed mb-3">
@@ -95,7 +95,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   aria-label="GitHub"
                 >
-                  <FiGithub className="text-slate-400 hover:text-indigo-300 h-5 w-5" />
+                  <FiGithub className="text-slate-400 hover:text-emerald-300 h-5 w-5" />
                 </a>
                 <a
                   href="https://x.com/ayuda0117"
@@ -103,7 +103,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   aria-label="Twitter"
                 >
-                  <FiTwitter className="text-slate-400 hover:text-indigo-300 h-5 w-5" />
+                  <FiTwitter className="text-slate-400 hover:text-emerald-300 h-5 w-5" />
                 </a>
                 <a
                   href="https://linkedin.com/ayanadamtew"
@@ -111,7 +111,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
                 >
-                  <FiLinkedin className="text-slate-400 hover:text-indigo-300 h-5 w-5" />
+                  <FiLinkedin className="text-slate-400 hover:text-emerald-300 h-5 w-5" />
                 </a>
                 <a
                   href="https://instagram.com/a_yu.da"
@@ -119,7 +119,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   aria-label="Instagram"
                 >
-                  <FiInstagram className="text-slate-400 hover:text-indigo-300 h-5 w-5" />
+                  <FiInstagram className="text-slate-400 hover:text-emerald-300 h-5 w-5" />
                 </a>
               </div>
             </div>
@@ -129,7 +129,7 @@ const AboutPage = () => {
               <h3 className="text-xl font-bold text-white mb-1">
                 Naol Gezahegne
               </h3>
-              <p className="text-indigo-300 font-medium mb-2">Co-founder and CEO</p>
+              <p className="text-emerald-300 font-medium mb-2">Co-founder and CEO</p>
               <p className="text-slate-300 text-sm leading-relaxed mb-3">
                Hi, I’m Naol Gezahegne co-founder of CodePulse. At 21, a founder with a deep passion for technology, collaborating with Ayana Damtew in my parents’ garage to hand-build the CodePulse. I’m driven by a simple belief: computers should be powerful yet effortless to use, and beautiful in both form and function. When I’m not building startups or coding, I’m diving into books, exploring design, and imagining the next breakthrough in personal computing and AI.
               </p>
@@ -140,7 +140,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   aria-label="GitHub"
                 >
-                  <FiGithub className="text-slate-400 hover:text-indigo-300 h-5 w-5" />
+                  <FiGithub className="text-slate-400 hover:text-emerald-300 h-5 w-5" />
                 </a>
                 <a
                   href="https://x.com/n1sup"
@@ -148,7 +148,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   aria-label="Twitter"
                 >
-                  <FiTwitter className="text-slate-400 hover:text-indigo-300 h-5 w-5" />
+                  <FiTwitter className="text-slate-400 hover:text-emerald-300 h-5 w-5" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/naol-gezahegne/"
@@ -156,7 +156,7 @@ const AboutPage = () => {
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
                 >
-                  <FiLinkedin className="text-slate-400 hover:text-indigo-300 h-5 w-5" />
+                  <FiLinkedin className="text-slate-400 hover:text-emerald-300 h-5 w-5" />
                 </a>
               </div>
             </div>
@@ -166,7 +166,7 @@ const AboutPage = () => {
         <div className="text-center">
           <Link
             to="/contact"
-            className="inline-flex items-center px-6 py-3 text-base font-medium text-indigo-100 bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-indigo-500"
+            className="inline-flex items-center px-6 py-3 text-base font-medium text-emerald-100 bg-emerald-600 border border-transparent rounded-md shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-emerald-500"
           >
             Get In Touch
           </Link>

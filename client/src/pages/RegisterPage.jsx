@@ -52,7 +52,7 @@ const FormInput = ({
         Icon ? "pl-10" : ""
       }
                        border border-slate-600 bg-slate-700 placeholder-slate-400 text-slate-100
-                       rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm
+                       rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm
                        transition shadow-sm disabled:opacity-50`}
       placeholder={placeholder}
       value={value}
@@ -123,7 +123,7 @@ const RegisterPage = () => {
   const displayError = formError || authError;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900/30 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-900/30 p-4">
       <motion.div
         variants={cardVariants}
         initial="hidden"
@@ -134,7 +134,7 @@ const RegisterPage = () => {
           {/* Header */}
           <div className="text-center">
             <Link to="/" className="inline-block mb-4">
-              <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 hover:opacity-80 transition-opacity">
+              <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 hover:opacity-80 transition-opacity">
                 CodePulse
               </span>
             </Link>
@@ -213,7 +213,7 @@ const RegisterPage = () => {
                 type="submit"
                 disabled={isLoading}
                 className={`group relative w-full flex justify-center items-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white 
-                                   bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-indigo-500 
+                                   bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-emerald-500 
                                    transition-all duration-150 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed`}
               >
                 {isLoading ? (
@@ -236,7 +236,7 @@ const RegisterPage = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="font-medium text-indigo-400 hover:text-indigo-300 hover:underline flex items-center justify-center mt-1"
+              className="font-medium text-emerald-400 hover:text-emerald-300 hover:underline flex items-center justify-center mt-1"
             >
               Sign In <FiLogIn className="ml-1.5 w-4 h-4" />
             </Link>

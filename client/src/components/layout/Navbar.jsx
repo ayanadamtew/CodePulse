@@ -25,7 +25,7 @@ const NavLink = ({ to, children, onClick, exact = false }) => {
     >
       {children}
       <span
-        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full bg-gradient-to-r from-indigo-400 to-violet-400 transition-all duration-300 group-hover:w-4/5
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 transition-all duration-300 group-hover:w-4/5
                     ${isActive ? "w-4/5" : "w-0"}`}
       />
     </Link>
@@ -38,7 +38,7 @@ const MobileNavLink = ({ to, children, onClick, icon }) => (
     onClick={onClick}
     className="flex items-center px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-all duration-150"
   >
-    {icon && <span className="mr-3 text-indigo-400">{icon}</span>}
+    {icon && <span className="mr-3 text-emerald-400">{icon}</span>}
     {children}
   </Link>
 );
@@ -76,7 +76,7 @@ const Navbar = () => {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group shrink-0" onClick={() => setIsMenuOpen(false)}>
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:shadow-indigo-500/50 transition-shadow duration-300">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/25 group-hover:shadow-emerald-500/50 transition-shadow duration-300">
               <FiZap className="w-4 h-4 text-white" />
             </div>
             <span className="text-xl font-bold gradient-text">
@@ -115,9 +115,9 @@ const Navbar = () => {
                 <Link
                   to="/register"
                   className="flex items-center gap-1.5 px-5 py-2 rounded-lg text-sm font-semibold text-white
-                             bg-gradient-to-r from-indigo-500 to-violet-600 
-                             hover:from-indigo-400 hover:to-violet-500
-                             shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/50
+                             bg-gradient-to-r from-emerald-500 to-teal-600 
+                             hover:from-emerald-400 hover:to-teal-500
+                             shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/50
                              transition-all duration-300 transform hover:scale-[1.03]"
                 >
                   <FiUserPlus className="w-4 h-4" /> Get Started
@@ -195,7 +195,7 @@ const Navbar = () => {
                     to="/register"
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center justify-center gap-2 mx-1 mt-2 px-4 py-3 rounded-xl text-sm font-semibold text-white
-                               bg-gradient-to-r from-indigo-500 to-violet-600 shadow-lg shadow-indigo-500/20"
+                               bg-gradient-to-r from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20"
                   >
                     <FiUserPlus className="w-4 h-4" /> Get Started Free
                   </Link>

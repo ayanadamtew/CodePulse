@@ -34,7 +34,7 @@ body {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6366f1;
+  background: #10b981;
 }
 
 /* ─── Keyframes ─────────────────────────────────────────────── */
@@ -62,9 +62,9 @@ body {
 }
 
 @keyframes pulse-ring {
-  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.5); }
-  70%  { transform: scale(1);    box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 @keyframes dot-pulse {
@@ -87,7 +87,7 @@ body {
 
 /* Gradient text shimmer */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 40%, #818cf8 70%, #22d3ee 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 40%, #34d399 70%, #22d3ee 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -95,7 +95,7 @@ body {
 }
 
 .gradient-text-shimmer {
-  background: linear-gradient(90deg, #f8fafc 0%, #a5b4fc 30%, #818cf8 50%, #a5b4fc 70%, #f8fafc 100%);
+  background: linear-gradient(90deg, #f8fafc 0%, #6ee7b7 30%, #34d399 50%, #6ee7b7 70%, #f8fafc 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -113,28 +113,28 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(99, 102, 241, 0.25);
+  border-color: rgba(16, 185, 129, 0.25);
   background: rgba(22, 27, 39, 0.85);
 }
 
 /* Glow effects */
-.glow-indigo {
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.35);
+.glow-emerald {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
 }
 .glow-cyan {
   box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
 }
 .glow-btn {
-  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 24px rgba(16, 185, 129, 0.4);
 }
 .glow-btn:hover {
-  box-shadow: 0 6px 32px rgba(99, 102, 241, 0.65);
+  box-shadow: 0 6px 32px rgba(16, 185, 129, 0.65);
 }
 
 /* Divider gradient */
 .divider-gradient {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(99, 102, 241, 0.4), transparent);
+  background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.4), transparent);
 }
 
 /* Prose code blocks */
@@ -142,7 +142,7 @@ body {
   @apply bg-slate-800 p-4 rounded-md overflow-x-auto border border-slate-700;
 }
 .prose code {
-  @apply bg-slate-800 px-1.5 py-0.5 rounded text-indigo-300 font-mono text-[0.9em] border border-slate-700/50;
+  @apply bg-slate-800 px-1.5 py-0.5 rounded text-emerald-300 font-mono text-[0.9em] border border-slate-700/50;
 }
 .prose code.math-inline {
   @apply bg-transparent p-0 text-inherit;
@@ -152,7 +152,7 @@ body {
 .step-connector {
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, rgba(99,102,241,0.5), rgba(139,92,246,0.2));
+  background: linear-gradient(to right, rgba(16,185,129,0.5), rgba(5,150,105,0.2));
   margin: 0 8px;
   position: relative;
   top: -16px;
@@ -161,7 +161,7 @@ body {
 /* Radial mesh grid background */
 .mesh-bg {
   background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(16,185,129,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(5,150,105,0.1) 0%, transparent 50%),
     radial-gradient(ellipse at 50% 100%, rgba(34,211,238,0.06) 0%, transparent 50%);
 }

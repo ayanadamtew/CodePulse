@@ -28,7 +28,7 @@ const EditorPanel = ({
           <select
             value={language}
             onChange={handleLanguageChange}
-            className="bg-slate-700 border border-slate-600 text-slate-200 text-sm rounded-md px-3 py-1.5 pr-8 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-sm"
+            className="bg-slate-700 border border-slate-600 text-slate-200 text-sm rounded-md px-3 py-1.5 pr-8 focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 transition shadow-sm"
           >
             <option value="javascript">JavaScript</option>
             <option value="python">Python</option>
@@ -117,7 +117,7 @@ const EditorPanel = ({
         <button
           onClick={handleSubmit}
           disabled={isSubmitting || isRunning}
-          className="px-4 py-1 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-800 disabled:opacity-50 transition-colors duration-150 flex items-center"
+          className="px-4 py-1 bg-emerald-600 text-white text-sm font-medium rounded-md hover:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-800 disabled:opacity-50 transition-colors duration-150 flex items-center"
         >
           <FiCheckCircle className="mr-1.5 w-4 h-4" />
           {isSubmitting ? "Submitting..." : "Submit"}

@@ -12,16 +12,16 @@ const TopicCard = ({ topic }) => {
     }
     const hue1 = Math.abs(hash % 360);
     const hue2 = (hue1 + 60) % 360; // Ensure a different hue for the second color
-    return `bg-gradient-to-br from-hue-rotate-[${hue1}deg] via-hue-rotate-[${(hue1 + 30) % 360}deg] to-hue-rotate-[${hue2}deg] from-indigo-500 via-purple-500 to-pink-500`;
+    return `bg-gradient-to-br from-hue-rotate-[${hue1}deg] via-hue-rotate-[${(hue1 + 30) % 360}deg] to-hue-rotate-[${hue2}deg] from-emerald-500 via-purple-500 to-pink-500`;
   };
 
   // Or use a predefined set of gradients
   const gradients = [
-    "from-indigo-500 via-purple-500 to-pink-500",
+    "from-emerald-500 via-purple-500 to-pink-500",
     "from-sky-500 via-cyan-500 to-teal-500",
     "from-green-500 via-lime-500 to-yellow-500",
     "from-orange-500 via-red-500 to-rose-500",
-    "from-violet-500 via-fuchsia-500 to-rose-500",
+    "from-teal-500 via-fuchsia-500 to-rose-500",
   ];
   const gradientClass = gradients[Math.abs(topic.name.charCodeAt(0) % gradients.length)];
 
@@ -37,7 +37,7 @@ const TopicCard = ({ topic }) => {
           h-full rounded-xl shadow-lg overflow-hidden 
           bg-slate-800 border border-slate-700 
           transition-all duration-300 ease-in-out
-          hover:shadow-2xl hover:border-indigo-500/70 hover:scale-[1.02]
+          hover:shadow-2xl hover:border-emerald-500/70 hover:scale-[1.02]
         `}
       >
         {/* Optional: Decorative top bar with gradient */}
@@ -46,7 +46,7 @@ const TopicCard = ({ topic }) => {
         <div className="p-6 flex flex-col justify-between h-[calc(100%-0.5rem)]"> {/* Adjust height if top bar is removed */}
           <div>
             <div className="flex items-center mb-3">
-              <FiLayers className="w-7 h-7 text-indigo-400 mr-3 flex-shrink-0" /> {/* Icon for Topic */}
+              <FiLayers className="w-7 h-7 text-emerald-400 mr-3 flex-shrink-0" /> {/* Icon for Topic */}
               <h3 className="text-xl font-semibold text-slate-100 truncate" title={topic.name}>
                 {topic.name}
               </h3>
@@ -60,13 +60,13 @@ const TopicCard = ({ topic }) => {
 
           <div className="mt-auto">
             {topic.problemCount > 0 && (
-              <div className="flex items-center text-xs font-medium text-indigo-300 bg-indigo-500/20 px-3 py-1.5 rounded-md w-fit mb-4">
+              <div className="flex items-center text-xs font-medium text-emerald-300 bg-emerald-500/20 px-3 py-1.5 rounded-md w-fit mb-4">
                 <FiTag className="w-3.5 h-3.5 mr-1.5" />
                 {topic.problemCount} {topic.problemCount === 1 ? "Problem" : "Problems"}
               </div>
             )}
 
-            <div className="flex items-center text-sm font-medium text-indigo-400 group-hover:text-indigo-300 transition-colors duration-200">
+            <div className="flex items-center text-sm font-medium text-emerald-400 group-hover:text-emerald-300 transition-colors duration-200">
               View Problems
               <FiArrowRight
                 className="ml-1.5 w-4 h-4 transition-transform duration-300 ease-out 

@@ -59,8 +59,8 @@ const ContactPage = () => {
     <div className="bg-slate-900 text-slate-200 min-h-screen px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-4xl mx-auto">
         <header className="text-center mb-12">
-          <FiMail className="mx-auto text-indigo-400 h-16 w-16 mb-4" />
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-pink-500">
+          <FiMail className="mx-auto text-emerald-400 h-16 w-16 mb-4" />
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-pink-500">
             Contact Us
           </h1>
           <p className="mt-4 text-lg text-slate-400">
@@ -72,7 +72,7 @@ const ContactPage = () => {
         <div className="grid md:grid-cols-2 gap-10">
           {/* Contact Form */}
           <section className="p-6 bg-slate-800 rounded-xl shadow-xl">
-            <h2 className="text-2xl font-semibold text-indigo-300 mb-6">
+            <h2 className="text-2xl font-semibold text-emerald-300 mb-6">
               Send Us a Message
             </h2>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -90,7 +90,7 @@ const ContactPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full border border-slate-600 bg-slate-700 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-100 placeholder-slate-400"
+                  className="w-full border border-slate-600 bg-slate-700 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm text-slate-100 placeholder-slate-400"
                   placeholder="Full Name"
                 />
                 {validationErrors.name && <p className="mt-1 text-xs text-red-400">{validationErrors.name}</p>}
@@ -109,7 +109,7 @@ const ContactPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full border border-slate-600 bg-slate-700 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-100 placeholder-slate-400"
+                  className="w-full border border-slate-600 bg-slate-700 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm text-slate-100 placeholder-slate-400"
                   placeholder="you@example.com"
                 />
                  {validationErrors.email && <p className="mt-1 text-xs text-red-400">{validationErrors.email}</p>}
@@ -128,7 +128,7 @@ const ContactPage = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full border border-slate-600 bg-slate-700 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-100 placeholder-slate-400"
+                  className="w-full border border-slate-600 bg-slate-700 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm text-slate-100 placeholder-slate-400"
                   placeholder="Regarding..."
                 />
                  {validationErrors.subject && <p className="mt-1 text-xs text-red-400">{validationErrors.subject}</p>}
@@ -147,7 +147,7 @@ const ContactPage = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full border border-slate-600 bg-slate-700 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm text-slate-100 placeholder-slate-400"
+                  className="w-full border border-slate-600 bg-slate-700 rounded-md px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm text-slate-100 placeholder-slate-400"
                   placeholder="Your message here..."
                 ></textarea>
                  {validationErrors.message && <p className="mt-1 text-xs text-red-400">{validationErrors.message}</p>}
@@ -156,7 +156,7 @@ const ContactPage = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-indigo-500 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full inline-flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-emerald-600 border border-transparent rounded-md shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-emerald-500 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
@@ -205,17 +205,17 @@ const ContactPage = () => {
 
           {/* Contact Info */}
           <section className="p-6 bg-slate-800 rounded-xl shadow-xl">
-            <h2 className="text-2xl font-semibold text-indigo-300 mb-6">
+            <h2 className="text-2xl font-semibold text-emerald-300 mb-6">
               Our Contact Information
             </h2>
             <div className="space-y-6 text-slate-300">
               <div className="flex items-start">
-                <FiMail className="flex-shrink-0 h-6 w-6 text-indigo-400 mr-4 mt-1" />
+                <FiMail className="flex-shrink-0 h-6 w-6 text-emerald-400 mr-4 mt-1" />
                 <div>
                   <h3 className="font-semibold text-slate-100">Email Us</h3>
                   <a
                     href="mailto:support@yourplatform.com"
-                    className="hover:text-indigo-300 break-all"
+                    className="hover:text-emerald-300 break-all"
                   >
                     support@CodePulse.com
                   </a>
@@ -225,21 +225,21 @@ const ContactPage = () => {
                 </div>
               </div>
               <div className="flex items-start">
-                <FiPhone className="flex-shrink-0 h-6 w-6 text-indigo-400 mr-4 mt-1" />
+                <FiPhone className="flex-shrink-0 h-6 w-6 text-emerald-400 mr-4 mt-1" />
                 <div>
                   <h3 className="font-semibold text-slate-100">Call Us </h3>
-                  <a href="tel:+1234567890" className="hover:text-indigo-300">
+                  <a href="tel:+1234567890" className="hover:text-emerald-300">
                     +251 973395537
                   </a>{" "}
                   <br />
-                  <a href="tel:+1234567890" className="hover:text-indigo-300">
+                  <a href="tel:+1234567890" className="hover:text-emerald-300">
                     +251 927082152
                   </a>
                   {/* <p className="text-sm text-slate-400">24/7</p> */}
                 </div>
               </div>
               {/* <div className="flex items-start">
-                <FiMapPin className="flex-shrink-0 h-6 w-6 text-indigo-400 mr-4 mt-1" />
+                <FiMapPin className="flex-shrink-0 h-6 w-6 text-emerald-400 mr-4 mt-1" />
                 <div>
                   <h3 className="font-semibold text-slate-100">Our Office </h3>
                   <p>123 Coding Lane<br />Tech City, TC 54321<br />United States</p>
@@ -256,7 +256,7 @@ const ContactPage = () => {
                 <a
                   href="https://x.com/ayuda0117"
                   target="_blank"
-                  className="text-slate-400 hover:text-indigo-300"
+                  className="text-slate-400 hover:text-emerald-300"
                   aria-label="Twitter"
                 >
                   <svg
@@ -274,7 +274,7 @@ const ContactPage = () => {
                 <a
                   href="https://instagram.com/ayanadamtew"
                   target="_blank"
-                  className="text-slate-400 hover:text-indigo-300"
+                  className="text-slate-400 hover:text-emerald-300"
                   aria-label="Instagram"
                 >
                   <svg
@@ -290,7 +290,7 @@ const ContactPage = () => {
                 <a
                   href="https://linkedin.com/in/a_yu.da"
                   target="_blank"
-                  className="text-slate-400 hover:text-indigo-300"
+                  className="text-slate-400 hover:text-emerald-300"
                   aria-label="LinkedIn"
                 >
                   <svg
@@ -306,7 +306,7 @@ const ContactPage = () => {
                 <a
                   href="https://github.com/ayanadamtew"
                   target="_blank"
-                  className="text-slate-400 hover:text-indigo-300"
+                  className="text-slate-400 hover:text-emerald-300"
                   aria-label="GitHub"
                 >
                   <svg

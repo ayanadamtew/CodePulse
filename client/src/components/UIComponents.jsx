@@ -2,7 +2,7 @@ import { FiLoader, FiXCircle } from "react-icons/fi";
 
 export const LoadingSpinner = ({ text = "Loading..." }) => (
   <div className="flex flex-col justify-center items-center h-full py-10 text-slate-400">
-    <FiLoader className="animate-spin h-8 w-8 text-indigo-400 mb-3" />
+    <FiLoader className="animate-spin h-8 w-8 text-emerald-400 mb-3" />
     <p className="text-xs">{text}</p>
   </div>
 );

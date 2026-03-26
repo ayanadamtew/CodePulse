@@ -5,7 +5,7 @@ const FooterLink = ({ to, children }) => (
   <li>
     <Link
       to={to}
-      className="text-sm text-slate-500 hover:text-indigo-300 transition-colors duration-200"
+      className="text-sm text-slate-500 hover:text-emerald-300 transition-colors duration-200"
     >
       {children}
     </Link>
@@ -19,7 +19,7 @@ const SocialIcon = ({ href, icon: Icon, label }) => (
     rel="noopener noreferrer"
     aria-label={label}
     className="w-9 h-9 rounded-lg border border-white/8 flex items-center justify-center text-slate-500
-               hover:text-indigo-400 hover:border-indigo-500/40 hover:bg-indigo-500/10
+               hover:text-emerald-400 hover:border-emerald-500/40 hover:bg-emerald-500/10
                transition-all duration-200 hover:scale-110"
   >
     <Icon size={16} />
@@ -54,7 +54,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="inline-flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center">
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
                 <FiZap className="w-3.5 h-3.5 text-white" />
               </div>
               <span className="text-xl font-bold gradient-text">CodePulse</span>

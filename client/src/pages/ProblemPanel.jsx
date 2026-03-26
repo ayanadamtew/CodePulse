@@ -64,9 +64,9 @@ const ProblemHeader = ({ title, difficulty, tags }) => (
     <button
       role="tab"
       aria-selected={isActive}
-      className={`relative flex items-center py-3 px-4 text-center border-b-2 font-medium text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:z-10 transition-colors duration-150 ease-in-out ${
+      className={`relative flex items-center py-3 px-4 text-center border-b-2 font-medium text-sm focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:z-10 transition-colors duration-150 ease-in-out ${
         isActive
-          ? "border-indigo-500 text-indigo-300"
+          ? "border-emerald-500 text-emerald-300"
           : "border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-600"
       }`}
       onClick={onClick}
@@ -224,8 +224,8 @@ const ProblemHeader = ({ title, difficulty, tags }) => (
     if (error === "locked") {
       return (
         <div className="flex flex-col items-center justify-center h-full text-center p-8 space-y-4">
-          <div className="bg-indigo-500/10 p-4 rounded-full">
-            <FiCode className="w-12 h-12 text-indigo-400" />
+          <div className="bg-emerald-500/10 p-4 rounded-full">
+            <FiCode className="w-12 h-12 text-emerald-400" />
           </div>
           <h3 className="text-xl font-bold text-slate-100">Solution Locked</h3>
           <p className="text-slate-400 max-w-sm">

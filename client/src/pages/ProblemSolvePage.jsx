@@ -337,7 +337,7 @@ const ProblemSolvePage = () => {
           <ErrorMessage message={error} />
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center px-4 py-2 mt-4 text-sm font-medium text-indigo-100 bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-indigo-500"
+            className="inline-flex items-center px-4 py-2 mt-4 text-sm font-medium text-emerald-100 bg-emerald-600 border border-transparent rounded-md shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-emerald-500"
           >
             <FiArrowLeft className="w-4 h-4 mr-2" /> Go Back
           </button>
@@ -353,7 +353,7 @@ const ProblemSolvePage = () => {
         <ErrorMessage message="Problem data could not be loaded or problem does not exist. Please try again or select another problem." />
         <button
           onClick={() => navigate(-1)} // Or navigate to problem list
-          className="inline-flex items-center px-4 py-2 mt-4 text-sm font-medium text-indigo-100 bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-indigo-500"
+          className="inline-flex items-center px-4 py-2 mt-4 text-sm font-medium text-emerald-100 bg-emerald-600 border border-transparent rounded-md shadow-sm hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-emerald-500"
         >
           <FiArrowLeft className="w-4 h-4 mr-2" /> Go Back
         </button>
@@ -406,7 +406,7 @@ const ProblemSolvePage = () => {
         problem && ( // Show reopen button only if problem is loaded
           <button
             onClick={handleReopenAiChat}
-            className="fixed bottom-4 right-4 bg-indigo-600 text-white p-3 rounded-full shadow-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900 z-[999]"
+            className="fixed bottom-4 right-4 bg-emerald-600 text-white p-3 rounded-full shadow-xl hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900 z-[999]"
             aria-label="Open AI Assistant"
           >
             <FiMessageSquare className="h-6 w-6" />

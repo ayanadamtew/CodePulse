@@ -10,7 +10,7 @@ import { FiArrowLeft, FiFileText, FiList, FiLoader, FiAlertCircle, FiInbox, FiCh
 // --- Reusable UI Components (Keep these as they are good) ---
 const LoadingState = ({ text = "Loading Topic Details..." }) => (
   <div className="flex flex-col justify-center items-center h-64 text-slate-400 py-10">
-    <FiLoader className="animate-spin h-10 w-10 text-indigo-400 mb-3" />
+    <FiLoader className="animate-spin h-10 w-10 text-emerald-400 mb-3" />
     <p className="text-sm">{text}</p>
   </div>
 );
@@ -26,7 +26,7 @@ const ErrorState = ({ message, title = "Error Loading Data", showBackButton = tr
       {showBackButton && (
         <Link
             to="/topics"
-            className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-indigo-100 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-indigo-500"
+            className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-emerald-100 bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-emerald-500"
         >
             <FiArrowLeft className="mr-2 h-4 w-4" />
             Back to Topics
@@ -45,7 +45,7 @@ const EmptyState = ({ icon: Icon = FiInbox, title, message, ctaLink, ctaText }) 
       <div className="mt-6">
         <Link
           to={ctaLink}
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-indigo-100 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-indigo-500"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-emerald-100 bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-emerald-500"
         >
           {ctaText}
         </Link>
@@ -79,13 +79,13 @@ const ProblemCard = ({ problem }) => {
   return (
     <Link
       to={`/problems/${problem._id}`}
-      className={`group block h-full relative transition-all duration-300 ease-in-out hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-xl`}
+      className={`group block h-full relative transition-all duration-300 ease-in-out hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-xl`}
       aria-label={`View problem: ${problem.title}`}
     >
       <div className={`h-full bg-slate-800 rounded-xl shadow-lg overflow-hidden border ${difficultyStyles.border} flex flex-col`}>
         <div className="p-5 flex-grow">
           <div className="flex justify-between items-start mb-2">
-            <h3 className="text-base font-semibold text-slate-100 group-hover:text-indigo-400 transition-colors duration-200 line-clamp-2 leading-tight">
+            <h3 className="text-base font-semibold text-slate-100 group-hover:text-emerald-400 transition-colors duration-200 line-clamp-2 leading-tight">
               {problem.title}
             </h3>
             <div className="flex-shrink-0 ml-2">{getStatusIcon(problem.userStatus)}</div>
@@ -106,7 +106,7 @@ const ProblemCard = ({ problem }) => {
           )}
         </div>
         <div className="px-5 py-3 bg-slate-800/50 border-t border-slate-700/50 group-hover:bg-slate-700/60 transition-colors">
-          <p className="text-xs text-indigo-400 group-hover:text-indigo-300 font-medium flex items-center justify-end">
+          <p className="text-xs text-emerald-400 group-hover:text-emerald-300 font-medium flex items-center justify-end">
             Solve Problem <FiArrowRight className="ml-1 w-3.5 h-3.5 transform transition-transform group-hover:translate-x-0.5" />
           </p>
         </div>
@@ -177,7 +177,7 @@ const TopicDetailPage = () => {
         <div className="mb-8">
           <Link
             to="/topics"
-            className="inline-flex items-center text-sm text-indigo-400 hover:text-indigo-300 transition-colors group"
+            className="inline-flex items-center text-sm text-emerald-400 hover:text-emerald-300 transition-colors group"
           >
             <FiArrowLeft className="mr-2 h-4 w-4 transform transition-transform group-hover:-translate-x-0.5" />
             Back to Topics
@@ -188,7 +188,7 @@ const TopicDetailPage = () => {
         <header className="mb-10 md:mb-12 pb-8 border-b border-slate-700/50">
           <div className="flex items-center mb-2">
             <div className={`w-12 h-12 rounded-lg mr-4 flex items-center justify-center bg-gradient-to-br ${
-                ['from-indigo-500 to-purple-600', 'from-sky-500 to-cyan-500', 'from-emerald-500 to-green-600', 'from-amber-500 to-orange-600'][topic.name.charCodeAt(0) % 4]
+                ['from-emerald-500 to-purple-600', 'from-sky-500 to-cyan-500', 'from-emerald-500 to-green-600', 'from-amber-500 to-orange-600'][topic.name.charCodeAt(0) % 4]
             }`}>
                 <FiList className="w-6 h-6 text-white"/>
             </div>
@@ -210,7 +210,7 @@ const TopicDetailPage = () => {
         >
           <div className="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-xl">
             <h2 className="text-xl sm:text-2xl font-semibold text-slate-100 mb-5 flex items-center">
-              <FiFileText className="w-5 h-5 sm:w-6 sm:h-6 mr-3 text-indigo-400"/>
+              <FiFileText className="w-5 h-5 sm:w-6 sm:h-6 mr-3 text-emerald-400"/>
               About {topic.name}
             </h2>
             {sanitizedNotesHtml ? (
@@ -230,7 +230,7 @@ const TopicDetailPage = () => {
         >
           <div className="flex justify-between items-center mb-6 md:mb-8">
             <h2 className="text-2xl sm:text-3xl font-semibold text-slate-100 flex items-center">
-                <FiList className="w-6 h-6 sm:w-7 sm:h-7 mr-3 text-indigo-400"/>
+                <FiList className="w-6 h-6 sm:w-7 sm:h-7 mr-3 text-emerald-400"/>
                 Related Problems ({problems.length})
             </h2>
             {/* Optional: Link to suggest a problem or view all problems if filtered */}

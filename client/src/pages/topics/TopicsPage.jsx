@@ -8,7 +8,7 @@ import { motion } from "framer-motion"; // For subtle animations
 
 const LoadingSpinner = () => (
   <div className="flex flex-col justify-center items-center h-64 text-slate-400">
-    <FiLoader className="animate-spin h-12 w-12 text-indigo-400 mb-4" />
+    <FiLoader className="animate-spin h-12 w-12 text-emerald-400 mb-4" />
     <p className="text-lg">Loading Topics...</p>
   </div>
 );
@@ -86,7 +86,7 @@ const TopicsPage = () => {
       <div className="max-w-7xl mx-auto">
         {/* Page Header */}
         <div className="mb-10 md:mb-12 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-indigo-400 to-cyan-400 text-transparent bg-clip-text">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-emerald-400 to-cyan-400 text-transparent bg-clip-text">
             Explore Programming Topics
           </h1>
           <p className="text-lg text-slate-300 max-w-3xl mx-auto">
@@ -105,7 +105,7 @@ const TopicsPage = () => {
               type="text"
               className="block w-full pl-12 pr-10 py-3 border border-slate-700 rounded-lg
                          leading-5 bg-slate-800 placeholder-slate-500 text-slate-200
-                         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
+                         focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500
                          transition-shadow duration-150 shadow-sm hover:shadow-md focus:shadow-lg"
               placeholder="Search topics (e.g., Arrays, Graphs...)"
               value={searchQuery}
