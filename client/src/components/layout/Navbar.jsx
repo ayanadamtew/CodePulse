@@ -2,25 +2,31 @@
 
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext"; // Adjust path as needed
-import { FiLogIn, FiUserPlus, FiUser, FiLogOut, FiMenu, FiX, FiCode,FiMail,FiInfo, FiHome, FiGrid } from "react-icons/fi"; // Example icons
+import { useAuth } from "../../context/AuthContext";
+import {
+  FiLogIn, FiUserPlus, FiUser, FiLogOut,
+  FiMenu, FiX, FiCode, FiMail, FiInfo,
+  FiHome, FiGrid, FiZap,
+} from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NavLink = ({ to, children, onClick, exact = false }) => {
   const location = useLocation();
-  const isActive = exact ? location.pathname === to : location.pathname.startsWith(to);
+  const isActive = exact
+    ? location.pathname === to
+    : location.pathname.startsWith(to);
 
   return (
     <Link
       to={to}
       onClick={onClick}
-      className={`relative px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ease-in-out group
-                  ${isActive ? "text-white" : "text-slate-300 hover:text-white"}`}
+      className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 group
+                  ${isActive ? "text-white" : "text-slate-400 hover:text-white"}`}
     >
       {children}
       <span
-        className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-indigo-400 transition-all duration-300 ease-out group-hover:w-3/5
-                    ${isActive ? "w-3/5" : "w-0"}`}
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full bg-gradient-to-r from-indigo-400 to-violet-400 transition-all duration-300 group-hover:w-4/5
+                    ${isActive ? "w-4/5" : "w-0"}`}
       />
     </Link>
   );
@@ -30,9 +36,9 @@ const MobileNavLink = ({ to, children, onClick, icon }) => (
   <Link
     to={to}
     onClick={onClick}
-    className="flex items-center px-4 py-3 rounded-lg text-base font-medium text-slate-200 hover:bg-slate-700 hover:text-white transition-colors duration-150"
+    className="flex items-center px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white transition-all duration-150"
   >
-    {icon && <span className="mr-3 text-lg">{icon}</span>}
+    {icon && <span className="mr-3 text-indigo-400">{icon}</span>}
     {children}
   </Link>
 );
@@ -57,27 +63,29 @@ const Navbar = () => {
   ];
 
   const mobileMenuVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
-    exit: { opacity: 0, y: -10, transition: { duration: 0.2, ease: "easeIn" } },
+    hidden: { opacity: 0, y: -12, scale: 0.98 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.25, ease: "easeOut" } },
+    exit: { opacity: 0, y: -8, scale: 0.98, transition: { duration: 0.18, ease: "easeIn" } },
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md shadow-lg border-b border-slate-700/50">
+    <nav className="sticky top-0 z-50 border-b border-white/[0.06]"
+      style={{ background: 'rgba(5, 8, 22, 0.8)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo / Brand Name */}
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center group" onClick={() => setIsMenuOpen(false)}>
-              {/* Simple text logo, can be replaced with an SVG */}
-              <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 group-hover:opacity-80 transition-opacity">
-                CodePulse
-              </span>
-            </Link>
-          </div>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-baseline space-x-2">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 group shrink-0" onClick={() => setIsMenuOpen(false)}>
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:shadow-indigo-500/50 transition-shadow duration-300">
+              <FiZap className="w-4 h-4 text-white" />
+            </div>
+            <span className="text-xl font-bold gradient-text">
+              CodePulse
+            </span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <NavLink key={item.to} to={item.to} exact={item.exact}>
                 {item.label}
@@ -85,18 +93,18 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop Auth Links / User Profile */}
-          <div className="hidden md:flex items-center">
+          {/* Desktop Auth */}
+          <div className="hidden md:flex items-center gap-2">
             {user ? (
               <>
                 <NavLink to="/profile">
-                  <FiUser className="inline mr-1" /> Profile
+                  <FiUser className="inline mr-1.5" />Profile
                 </NavLink>
                 <button
                   onClick={handleLogout}
-                  className="ml-3 flex items-center px-4 py-2 rounded-md text-sm font-medium bg-rose-600 hover:bg-rose-700 text-white transition-colors shadow-sm hover:shadow-md"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-rose-400 border border-rose-500/30 hover:bg-rose-500/10 hover:border-rose-500/60 transition-all duration-200"
                 >
-                  <FiLogOut className="mr-1.5" /> Logout
+                  <FiLogOut className="w-4 h-4" /> Logout
                 </button>
               </>
             ) : (
@@ -106,33 +114,34 @@ const Navbar = () => {
                 </NavLink>
                 <Link
                   to="/register"
-                  className="ml-3 flex items-center px-4 py-2 rounded-md text-sm font-medium bg-indigo-500 hover:bg-indigo-600 text-white transition-colors shadow-sm hover:shadow-md"
+                  className="flex items-center gap-1.5 px-5 py-2 rounded-lg text-sm font-semibold text-white
+                             bg-gradient-to-r from-indigo-500 to-violet-600 
+                             hover:from-indigo-400 hover:to-violet-500
+                             shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/50
+                             transition-all duration-300 transform hover:scale-[1.03]"
                 >
-                  <FiUserPlus className="mr-1.5" /> Register
+                  <FiUserPlus className="w-4 h-4" /> Get Started
                 </Link>
               </>
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="-mr-2 flex md:hidden">
+          {/* Mobile Hamburger */}
+          <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-300 hover:text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-all"
-              aria-controls="mobile-menu"
-              aria-expanded={isMenuOpen}
+              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+              aria-label="Toggle menu"
             >
-              <span className="sr-only">Open main menu</span>
               <AnimatePresence initial={false} mode="wait">
                 <motion.div
                   key={isMenuOpen ? "x" : "menu"}
-                  initial={{ rotate: isMenuOpen ? -90 : 0, opacity: 0 }}
+                  initial={{ rotate: -90, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: isMenuOpen ? 0 : 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.18 }}
                 >
-                  {isMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
+                  {isMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
                 </motion.div>
               </AnimatePresence>
             </button>
@@ -140,7 +149,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -148,20 +157,22 @@ const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden border-t border-slate-700/50"
-            id="mobile-menu"
+            className="md:hidden border-t border-white/[0.06]"
+            style={{ background: 'rgba(5, 8, 22, 0.95)' }}
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div className="px-3 py-3 space-y-1">
               {navItems.map((item) => (
-                 <MobileNavLink
-                    key={item.to}
-                    to={item.to}
-                    icon={item.icon}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </MobileNavLink>
+                <MobileNavLink
+                  key={item.to}
+                  to={item.to}
+                  icon={item.icon}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </MobileNavLink>
               ))}
+
+              <div className="my-2 h-px bg-white/5" />
 
               {user ? (
                 <>
@@ -170,9 +181,9 @@ const Navbar = () => {
                   </MobileNavLink>
                   <button
                     onClick={handleLogout}
-                    className="w-full flex items-center mt-1 px-4 py-3 rounded-lg text-base font-medium text-rose-300 bg-rose-600/30 hover:bg-rose-600/50 hover:text-rose-100 transition-colors duration-150"
+                    className="w-full flex items-center px-4 py-3 rounded-xl text-sm font-medium text-rose-400 hover:bg-rose-500/10 transition-all"
                   >
-                    <FiLogOut className="mr-3 text-lg" /> Logout
+                    <FiLogOut className="mr-3" /> Logout
                   </button>
                 </>
               ) : (
@@ -180,11 +191,14 @@ const Navbar = () => {
                   <MobileNavLink to="/login" icon={<FiLogIn />} onClick={() => setIsMenuOpen(false)}>
                     Login
                   </MobileNavLink>
-                  <MobileNavLink to="/register" icon={<FiUserPlus />} onClick={() => setIsMenuOpen(false)}
-                    className="block w-full mt-1 px-4 py-3 rounded-lg text-base font-medium text-indigo-300 bg-indigo-500/30 hover:bg-indigo-500/50 hover:text-indigo-100 transition-colors duration-150" // Custom styling for register button in mobile
+                  <Link
+                    to="/register"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 mx-1 mt-2 px-4 py-3 rounded-xl text-sm font-semibold text-white
+                               bg-gradient-to-r from-indigo-500 to-violet-600 shadow-lg shadow-indigo-500/20"
                   >
-                    Register
-                  </MobileNavLink>
+                    <FiUserPlus className="w-4 h-4" /> Get Started Free
+                  </Link>
                 </>
               )}
             </div>
