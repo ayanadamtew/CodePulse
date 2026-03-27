@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="client/src/assets/LandingPage.jpg" alt="CodePulse Logo" width="200" />
+  <img src="client/src/assets/LandingPage.jpg" alt="CodePulse Logo" />
 
   # CodePulse
   <br/>
